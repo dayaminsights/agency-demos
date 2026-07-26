@@ -1662,5 +1662,23 @@
     });
   });
 </script>
-</body>
+<script>
+  // Failsafe: content using fade-up/fade-in classes must never stay
+  // permanently (or intermittently) invisible if the Builder's own
+  // GSAP/ScrollTrigger reveal animation didn't fire correctly for any
+  // reason -- verified live that a ScrollTrigger miscalculation can leave
+  // real content stuck at opacity:0 with no scroll position that ever
+  // reveals it. Force visibility after a delay generous enough for any
+  // legitimate reveal animation to have already played, but only touch
+  // elements still actually hidden -- content that already revealed
+  // correctly must not be disturbed.
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up, .fade-in').forEach((el) => {
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+  }, 2500);
+</script></body>
 </html>
