@@ -1,0 +1,28 @@
+<html><body>Bespoke demo<style>
+  /* !important is required here: GSAP's ScrollTrigger keeps re-asserting a
+     PLAIN (non-important) inline opacity on every tick for a tween that
+     hasn't been told to play yet. A plain inline `el.style.opacity = '1'`
+     from JS gets silently overwritten by GSAP's next tick -- verified live,
+     confirmed with getComputedStyle tracking every few hundred ms. A
+     stylesheet rule marked !important beats any later PLAIN inline style
+     GSAP sets, permanently, so this survives GSAP continuing to fight it. */
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  // Failsafe: content using fade-up/fade-in classes must never stay
+  // permanently (or intermittently) invisible if the Builder's own
+  // GSAP/ScrollTrigger reveal animation didn't fire correctly for any
+  // reason -- verified live that a ScrollTrigger miscalculation can leave
+  // real content stuck at opacity:0 with no scroll position that ever
+  // reveals it. Force visibility after a delay generous enough for any
+  // legitimate reveal animation to have already played, but only touch
+  // elements still actually hidden -- content that already revealed
+  // correctly must not be disturbed.
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up, .fade-in').forEach((el) => {
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script></body></html>
