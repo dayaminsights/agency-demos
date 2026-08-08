@@ -89,12 +89,18 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(20,16,14,0.55) 0%,
-        rgba(44,38,34,0.45) 50%,
-        rgba(30,46,30,0.50) 100%
-      );
+      background:
+        radial-gradient(
+          ellipse 900px 550px at center,
+          rgba(10,8,6,0.45) 0%,
+          rgba(10,8,6,0) 70%
+        ),
+        linear-gradient(
+          160deg,
+          rgba(20,16,14,0.72) 0%,
+          rgba(30,26,22,0.68) 50%,
+          rgba(20,30,20,0.72) 100%
+        );
     }
     .hero-content {
       position: relative;
