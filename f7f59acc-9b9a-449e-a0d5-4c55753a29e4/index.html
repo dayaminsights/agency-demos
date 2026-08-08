@@ -84,7 +84,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/img-001.jpg') center center / cover no-repeat;
+      background: url('images/img-003.jpg') center center / cover no-repeat;
     }
     .hero-overlay {
       position: absolute;
@@ -1429,17 +1429,46 @@
   .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
 </style>
 <script>
-  // Failsafe: content using fade-up/fade-in classes must never stay
-  // permanently (or intermittently) invisible if the Builder's own
-  // GSAP/ScrollTrigger reveal animation didn't fire correctly for any
-  // reason -- verified live that a ScrollTrigger miscalculation can leave
-  // real content stuck at opacity:0 with no scroll position that ever
-  // reveals it. Force visibility after a delay generous enough for any
-  // legitimate reveal animation to have already played, but only touch
-  // elements still actually hidden -- content that already revealed
-  // correctly must not be disturbed.
+  // Failsafe: scroll-reveal content must never stay permanently (or
+  // intermittently) invisible if the Builder's own GSAP/ScrollTrigger
+  // reveal animation didn't fire correctly for any reason -- verified live
+  // that a ScrollTrigger miscalculation can leave real content stuck at
+  // opacity:0 with no scroll position that ever reveals it.
+  //
+  // The Builder has full creative freedom over its own reveal CSS/JS and is
+  // not guaranteed to reuse any particular class name run to run (verified
+  // live: one real page used .fade-up/.fade-in, another used .reveal /
+  // .reveal-left / .reveal-right for the identical opacity:0-then-animate-in
+  // mechanic) -- a hardcoded class list silently stops covering pages that
+  // invent different names. Discover what needs watching by reading the
+  // page's own same-origin stylesheets for simple selectors the Builder
+  // declared with `opacity: 0` (its own "starts hidden" convention),
+  // instead of guessing class names.
   setTimeout(() => {
-    document.querySelectorAll('.fade-up, .fade-in').forEach((el) => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // cross-origin stylesheet (e.g. a Google Fonts <link>), inaccessible
+      }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue; // skip @media/@keyframes containers etc -- style rules only
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        // Only plain selectors -- a :hover/:focus- or @media-gated opacity:0
+        // rule hides something for a reason unrelated to scroll-reveal, and
+        // forcing it visible would be a real regression, not a rescue.
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach((el) => {
       // Tag everything this failsafe is responsible for, so bugcheck's
       // stuck-reveal gate can see bespoke pages at all -- it selects
       // [data-motion-tracked], which only the Vite template tier's
