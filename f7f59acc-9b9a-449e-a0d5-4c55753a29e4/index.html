@@ -1,199 +1,751 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brew &amp; Bloom</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=DM+Sans&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/agency-demos/static/blocks/blocks.css" />
-  <style>:root{ --c0: #71716a; --c1: #292d16; --c2: #d5d8d3; --c3: #fbfff8; --c4: #71716a; --font-heading:'Cormorant Garamond',serif; --font-body:'DM Sans',sans-serif; }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brew & Bloom — Dubai's Most Peaceful Café</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --olive-deep: #292d16;
+  --olive-mid: #55572c;
+  --olive-muted: #6a6753;
+  --sage-light: #a5a59b;
+  --cream: #d5d8d3;
+  --off-white: #f4f2ee;
+  --warm-white: #faf9f5;
+  --text: #292d16;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: var(--sans); background: var(--warm-white); color: var(--text); overflow-x: hidden; }
+img { display: block; width: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+  background: transparent;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled { background: rgba(249,248,244,0.92); backdrop-filter: blur(12px); }
+.nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; transition: color 0.4s; }
+nav.scrolled .nav-logo { color: var(--olive-deep); }
+.nav-cta {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--warm-white); border: 1px solid rgba(255,255,255,0.5); padding: 0.55rem 1.3rem; border-radius: 2rem;
+  transition: all 0.3s;
+}
+nav.scrolled .nav-cta { color: var(--olive-deep); border-color: var(--olive-mid); }
+.nav-cta:hover { background: var(--olive-mid); color: var(--warm-white) !important; border-color: var(--olive-mid) !important; }
+
+/* HERO */
+.hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('images/img-002.jpg') center center / cover no-repeat;
+  transform-origin: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(20,24,8,0.15) 0%, rgba(20,24,8,0.55) 70%, rgba(20,24,8,0.75) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 700px; padding: 0 2.5rem 5rem;
+}
+.hero-eyebrow {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(213,216,211,0.85); margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 300; line-height: 1.1;
+  color: var(--warm-white); letter-spacing: -0.01em; margin-bottom: 1.4rem;
+}
+.hero h1 em { font-style: italic; font-weight: 300; }
+.hero-sub {
+  font-family: var(--sans); font-size: 1rem; font-weight: 300; line-height: 1.65;
+  color: rgba(240,238,234,0.85); max-width: 480px; margin-bottom: 2.2rem;
+}
+.btn-primary {
+  display: inline-block;
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--olive-mid); color: var(--warm-white); padding: 0.9rem 2rem; border-radius: 2rem;
+  transition: background 0.3s, transform 0.2s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--olive-deep); transform: translateY(-1px); }
+.hero-scroll {
+  position: absolute; bottom: 2rem; right: 2.5rem; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  color: rgba(255,255,255,0.5); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+}
+.scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.3); animation: scrollPulse 2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:.9} }
+
+/* CONTRAST HOOK */
+.hook {
+  background: var(--olive-deep); padding: 7rem 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.hook-inner { max-width: 760px; text-align: center; }
+.hook-quote {
+  font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.5; margin-bottom: 2.5rem;
+}
+.hook-quote span { color: rgba(213,216,211,0.55); }
+.hook-bridge {
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em;
+  color: rgba(165,165,155,0.8); line-height: 1.7;
+}
+.hook-bridge strong { color: var(--cream); font-weight: 500; }
+.hook-divider { width: 40px; height: 1px; background: var(--olive-mid); margin: 2rem auto; }
+
+/* ORIGIN STORY */
+.origin { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+.origin-image { position: relative; overflow: hidden; min-height: 500px; }
+.origin-image img { height: 100%; object-fit: cover; transition: transform 8s ease; }
+.origin-image:hover img { transform: scale(1.04); }
+.origin-text {
+  background: var(--off-white); padding: 6rem 4rem 6rem 4.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.section-tag {
+  font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--olive-mid); margin-bottom: 1.4rem;
+}
+.origin-text h2 {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2;
+  color: var(--olive-deep); margin-bottom: 1.8rem;
+}
+.origin-text h2 em { font-style: italic; }
+.origin-text p {
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+  color: var(--olive-muted); margin-bottom: 1.4rem;
+}
+.origin-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--olive-deep); color: var(--cream);
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.6rem 1.2rem; border-radius: 2rem; margin-top: 0.5rem;
+  width: fit-content;
+}
+
+/* USP STRIP */
+.usps { background: var(--cream); padding: 5rem 2.5rem; overflow: hidden; }
+.usps-heading { text-align: center; margin-bottom: 3.5rem; }
+.usps-heading h2 {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--olive-deep);
+}
+.usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+.usp-card {
+  background: #b8bab3; padding: 2.8rem 2.2rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+  transition: background 0.3s;
+}
+.usp-card:nth-child(even) { background: var(--sage-light); }
+.usp-card:hover { background: var(--olive-mid); }
+.usp-card:hover .usp-num, .usp-card:hover .usp-title, .usp-card:hover .usp-phrase { color: var(--cream); }
+.usp-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--olive-deep); opacity: 0.4; line-height: 1; }
+.usp-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--olive-deep); }
+.usp-phrase { font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: var(--olive-muted); line-height: 1.6; }
+
+/* MENU */
+.menu-section { background: var(--warm-white); padding: 6rem 2.5rem; }
+.menu-inner { max-width: 1100px; margin: 0 auto; }
+.menu-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+.menu-header h2 {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--olive-deep); margin-bottom: 1rem;
+}
+.menu-header p { font-family: var(--sans); font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: var(--olive-muted); }
+.menu-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 4rem; }
+.menu-photos .photo-item { border-radius: 1rem; overflow: hidden; aspect-ratio: 4/3; }
+.menu-photos img { height: 100%; transition: transform 0.6s ease; }
+.menu-photos .photo-item:hover img { transform: scale(1.05); }
+.menu-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.menu-col-title {
+  font-family: var(--serif); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--olive-mid); border-bottom: 1px solid var(--cream); padding-bottom: 0.8rem; margin-bottom: 1.8rem;
+}
+.menu-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
+.menu-item-info { flex: 1; }
+.menu-item-name {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--olive-deep); margin-bottom: 0.25rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.menu-item-name .sig-badge {
+  font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--olive-mid); color: var(--cream); padding: 0.2rem 0.6rem; border-radius: 1rem;
+}
+.menu-item-desc { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; color: var(--olive-muted); line-height: 1.55; }
+.menu-item-price { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--olive-mid); white-space: nowrap; }
+
+/* GALLERY */
+.gallery-section { background: var(--olive-deep); padding: 5rem 0 0; }
+.gallery-header { text-align: center; padding: 0 2.5rem 3.5rem; }
+.gallery-header h2 {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; color: var(--cream);
+  font-style: italic;
+}
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 300px 260px;
+  gap: 3px;
+}
+.g-item { overflow: hidden; position: relative; }
+.g-item img { height: 100%; width: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.g-item:hover img { transform: scale(1.06); }
+.g-item:nth-child(1) { grid-row: 1/3; }
+.g-item:nth-child(4) { grid-column: 2/4; }
+.gallery-cta {
+  text-align: center; padding: 3.5rem 2.5rem;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+}
+.gallery-cta p {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 300; font-style: italic; color: var(--cream);
+}
+.btn-outline {
+  display: inline-block;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid rgba(213,216,211,0.5); color: var(--cream); padding: 0.85rem 2rem; border-radius: 2rem;
+  transition: all 0.3s;
+}
+.btn-outline:hover { background: var(--cream); color: var(--olive-deep); }
+
+/* TESTIMONIALS */
+.testimonials { background: var(--off-white); padding: 6rem 2.5rem; }
+.test-inner { max-width: 1100px; margin: 0 auto; }
+.test-header { text-align: center; margin-bottom: 1.5rem; }
+.test-header h2 {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--olive-deep); margin-bottom: 0.5rem;
+}
+.test-header .stars-line { color: var(--olive-mid); font-size: 1.1rem; letter-spacing: 0.1em; }
+.pullquote {
+  background: var(--olive-deep); border-radius: 1.2rem;
+  padding: 3rem 3.5rem; margin: 3rem 0;
+  position: relative;
+}
+.pullquote::before {
+  content: '\201C';
+  font-family: var(--serif); font-size: 6rem; color: var(--olive-mid);
+  position: absolute; top: -0.5rem; left: 2.5rem; line-height: 1;
+}
+.pullquote p {
+  font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.9rem); font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.5; position: relative; z-index: 1;
+}
+.pullquote cite {
+  display: block; margin-top: 1.2rem;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em;
+  color: var(--sage-light); font-style: normal;
+}
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.review-card {
+  background: var(--cream); border-radius: 1rem; padding: 1.8rem 2rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+}
+.review-stars { color: var(--olive-mid); font-size: 0.85rem; letter-spacing: 0.05em; }
+.review-text { font-family: var(--sans); font-size: 0.85rem; font-weight: 300; color: var(--olive-muted); line-height: 1.7; }
+.review-author { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--olive-deep); }
+.review-date { font-family: var(--sans); font-size: 0.7rem; color: var(--sage-light); }
+
+/* RESERVATION */
+.reservation { background: var(--warm-white); padding: 6rem 2.5rem; }
+.res-inner { max-width: 900px; margin: 0 auto; }
+.res-header { text-align: center; margin-bottom: 4rem; }
+.res-header h2 {
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--olive-deep); margin-bottom: 1rem;
+}
+.res-header p { font-family: var(--sans); font-size: 0.9rem; font-weight: 300; color: var(--olive-muted); line-height: 1.7; }
+.res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.res-block h3 {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--olive-deep); margin-bottom: 1rem;
+}
+.res-block p, .res-block a {
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 300; color: var(--olive-muted); line-height: 1.8; display: block;
+}
+.res-block a:hover { color: var(--olive-mid); }
+.res-block .phone-link {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--olive-mid);
+  display: inline-block; margin-bottom: 0.5rem;
+}
+.hours-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--cream); padding: 0.5rem 0; }
+.hours-row span:last-child { font-weight: 500; color: var(--olive-mid); }
+.map-container {
+  border-radius: 1rem; overflow: hidden; height: 280px; margin-bottom: 3rem;
+  border: 1px solid var(--cream);
+}
+.map-container iframe { width: 100%; height: 100%; border: none; }
+.res-cta-block { text-align: center; }
+.res-cta-block .btn-primary { font-size: 0.85rem; padding: 1.1rem 2.5rem; }
+.closing-line {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 300; font-style: italic;
+  color: var(--olive-muted); margin-top: 1.5rem;
+}
+
+/* FOOTER */
+footer {
+  background: var(--olive-deep); padding: 3rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-brand { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--cream); }
+.footer-info { font-family: var(--sans); font-size: 0.78rem; font-weight: 300; color: var(--sage-light); line-height: 1.8; }
+.footer-info a { color: var(--sage-light); }
+.footer-info a:hover { color: var(--cream); }
+.footer-copy { font-family: var(--sans); font-size: 0.7rem; color: rgba(165,165,155,0.5); }
+
+/* ANIMATIONS baseline */
+.fade-up { opacity: 0; transform: translateY(30px); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .origin { grid-template-columns: 1fr; }
+  .origin-image { min-height: 400px; }
+  .origin-text { padding: 4rem 2rem; }
+  .usp-grid { grid-template-columns: 1fr 1fr; }
+  .menu-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .menu-photos { grid-template-columns: 1fr 1fr; }
+  .menu-photos .photo-item:last-child { display: none; }
+  .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .g-item:nth-child(1) { grid-row: auto; }
+  .g-item:nth-child(4) { grid-column: auto; }
+  .res-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  nav { padding: 1rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem 4rem; }
+  .hook { padding: 5rem 1.5rem; }
+  .usp-grid { grid-template-columns: 1fr; }
+  .menu-section, .testimonials, .reservation { padding: 4rem 1.5rem; }
+  .menu-photos { grid-template-columns: 1fr; }
+  .menu-photos .photo-item:last-child { display: block; }
+  .gallery-mosaic { grid-template-columns: 1fr; }
+  .pullquote { padding: 2.5rem 2rem; }
+  footer { flex-direction: column; }
+}
+</style>
 </head>
-<body data-motion="balanced">
-  <main>
-<section class="block block--hero hero--layered-parallax" data-block="hero" data-variant="layered-parallax">
-  
-  <div class="hero__media" data-reveal="fade">
-    <img src="images/img-002.jpg" alt="" loading="eager" />
+<body>
+
+<nav id="mainNav">
+  <span class="nav-logo">Brew & Bloom</span>
+  <a href="#reservation" class="nav-cta">Reserve a Table</a>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Warsan Garden Café — Dubai</p>
+    <h1>Dubai's Most Peaceful Café, Wrapped in <em>Bloom and Quiet.</em></h1>
+    <p class="hero-sub">Specialty coffee, lush greenery, and a seat that feels nothing like the rest of Dubai. Book your table in seconds.</p>
+    <a href="#reservation" class="btn-primary">Reserve Your Table — Fast & Easy</a>
   </div>
-  
-  <div class="hero__copy" data-reveal="rise">
-    <p class="hero__eyebrow">Warsan, Dubai · Specialty Coffee &amp; Garden Café</p>
-    <h1 class="hero__headline" data-reveal="lines">Dubai&#39;s Most <span class="accent">Peaceful</span> Café, Wrapped in Bloom and Quiet.</h1>
-    <p class="hero__sub">Specialty coffee, lush greenery, and a seat that feels nothing like the rest of Dubai. Book your table in seconds.</p>
-    <a class="btn btn--magnetic" href="#contact" data-magnetic>Reserve Your Table — Fast &amp; Easy</a>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
-<div class="sticky-cta" data-block="sticky-cta" data-variant="default" data-sticky-cta>
-  <a class="btn btn--magnetic" href="#contact" data-magnetic>Reserve Your Table — Fast &amp; Easy</a>
-  
-</div>
 
-
-<section class="block block--trust-strip trust-strip--marquee" data-block="trust-strip" data-variant="marquee">
-  
-  <div class="trust-strip__track" data-marquee>
-    <div class="trust-strip__group">
-      <span class="trust-strip__item">Brewed to Order</span><span class="trust-strip__item">Live Garden Setting</span><span class="trust-strip__item">Warsan&#39;s Hidden Gem</span><span class="trust-strip__item">Florals &amp; Coffee</span><span class="trust-strip__item">Calm by Design</span><span class="trust-strip__item">Specialty Beans Only</span><span class="trust-strip__item">4.8 Rated</span><span class="trust-strip__item">Brewed to Order</span><span class="trust-strip__item">Live Garden Setting</span><span class="trust-strip__item">Warsan&#39;s Hidden Gem</span>
-    </div>
-    <div class="trust-strip__group" aria-hidden="true">
-      <span class="trust-strip__item">Brewed to Order</span><span class="trust-strip__item">Live Garden Setting</span><span class="trust-strip__item">Warsan&#39;s Hidden Gem</span><span class="trust-strip__item">Florals &amp; Coffee</span><span class="trust-strip__item">Calm by Design</span><span class="trust-strip__item">Specialty Beans Only</span><span class="trust-strip__item">4.8 Rated</span><span class="trust-strip__item">Brewed to Order</span><span class="trust-strip__item">Live Garden Setting</span><span class="trust-strip__item">Warsan&#39;s Hidden Gem</span>
-    </div>
-  </div>
-  
-</section>
-
-<section class="block block--narrative" data-block="narrative" data-variant="pinned-scrub" data-narrative>
-  <div class="narrative__pin">
-    <p class="narrative__problem" data-narrative-problem>Every café in Dubai looks the same on a screen — and you&#39;ve sat in enough loud, overpriced ones to know the difference only shows up after you&#39;ve already ordered.</p>
-    <p class="narrative__solution" data-narrative-solution>Brew &amp; Bloom is tucked inside a living garden in Warsan — not a café that hung a few plants on the wall, but a real space where fresh blooms and great coffee share the same air. Every cup is pulled to order, and our baristas bring the same care to every drink that a florist brings to every stem. We built this place because Dubai needed somewhere you could actually exhale.</p>
-    <p class="narrative__proof" data-narrative-proof>4.8 from guests who found us once and keep finding their way back.</p>
+<!-- 2. CONTRAST HOOK -->
+<section class="hook">
+  <div class="hook-inner fade-up">
+    <p class="hook-quote">"Every café in Dubai looks the same on a screen — and you've sat in enough loud, overpriced ones to know the difference only shows up after you've already ordered."</p>
+    <div class="hook-divider"></div>
+    <p class="hook-bridge">You already know what you're looking for. You've just been looking in the wrong part of the city.<br><strong>Brew & Bloom is different. And it starts with where it's built.</strong></p>
   </div>
 </section>
-<section class="block block--feature-split" data-block="feature-split" data-variant="alternating">
-  <div class="feature-split__inner">
-    
-    <div class="feature-split__media" data-reveal="fade">
-      <img src="images/img-001.jpg" alt="" loading="lazy" />
-    </div>
-    
-    <div class="feature-split__copy" data-reveal="rise">
-      <h2 class="feature-split__title">A Garden That <span class="accent">Breathes</span> Around You</h2>
-      <p class="feature-split__body">Brew &amp; Bloom is tucked inside a living garden in Warsan — not a café that hung a few plants on the wall, but a real space where fresh blooms and great coffee share the same air. Every cup is pulled to order, and our baristas bring the same care to every drink that a florist brings to every stem.</p>
-      
-      <ul class="feature-split__bullets">
-        <li>Single-origin specialty beans</li><li>Baristas trained in precision craft</li><li>Surrounded by real, living flora</li><li>No shortcuts — everything made fresh</li>
-      </ul>
-      
+
+<!-- 3. ORIGIN STORY -->
+<section class="origin">
+  <div class="origin-image">
+    <img src="images/img-001.jpg" alt="The Brew & Bloom garden interior — botanical and ambient">
+  </div>
+  <div class="origin-text">
+    <p class="section-tag fade-up">The Garden Origin</p>
+    <h2 class="fade-up">Not a café with plants.<br><em>A garden with coffee.</em></h2>
+    <p class="fade-up">Brew & Bloom is tucked inside a living garden in Warsan — not a café that hung a few plants on the wall, but a real space where fresh blooms and great coffee share the same air. Every cup is pulled to order, and our baristas bring the same care to every drink that a florist brings to every stem.</p>
+    <p class="fade-up">We built this place because Dubai needed somewhere you could actually exhale.</p>
+    <p class="fade-up" style="font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--olive-deep);">Warsan isn't on the typical Dubai café circuit. That's not a limitation — that's the point.</p>
+    <div class="origin-badge fade-up">
+      <span>✦</span> Real plant nursery. Real specialty coffee.
     </div>
   </div>
 </section>
 
-
-<section class="block block--stats" data-block="stats" data-variant="counters">
-  <h2 class="stats__heading" data-reveal="rise">Numbers That Mean Something</h2>
-  <div class="stats__grid">
-    
-    <div class="stat" data-reveal="rise" style="--i: 0">
-      <span class="stat__value" data-count-to="4.8">4.8</span>
-      <span class="stat__label">Star Rating</span>
+<!-- 4. USP STRIP -->
+<section class="usps">
+  <div class="usps-heading fade-up">
+    <p class="section-tag" style="text-align:center; margin-bottom: 0.6rem;">Six reasons the cup tastes different here</p>
+    <h2>Feel the difference before you finish your first sip.</h2>
+  </div>
+  <div class="usp-grid">
+    <div class="usp-card fade-up">
+      <span class="usp-num">01</span>
+      <span class="usp-title">Brewed to Order.</span>
+      <span class="usp-phrase">Never sitting under a heat lamp. Never pre-made. Your cup is pulled the moment you ask for it.</span>
     </div>
-    
-    <div class="stat" data-reveal="rise" style="--i: 1">
-      <span class="stat__value" data-count-to="12">12</span>
-      <span class="stat__label">Hours Each Cold Brew Steeps</span>
+    <div class="usp-card fade-up">
+      <span class="usp-num">02</span>
+      <span class="usp-title">Specialty Beans Only.</span>
+      <span class="usp-phrase">No shortcuts in the cup. Traceable origins, proper roast, no compromise behind the bar.</span>
     </div>
-    
-    <div class="stat" data-reveal="rise" style="--i: 2">
-      <span class="stat__value" data-count-to="100">100</span>
-      <span class="stat__label">Specialty Beans Only</span>
+    <div class="usp-card fade-up">
+      <span class="usp-num">03</span>
+      <span class="usp-title">Calm by Design.</span>
+      <span class="usp-phrase">Built to slow you down. The layout, the light, the greenery — all of it tells your nervous system to settle.</span>
     </div>
-    
-    <div class="stat" data-reveal="rise" style="--i: 3">
-      <span class="stat__value" data-count-to="1">1</span>
-      <span class="stat__label">Place Like This in Dubai</span>
+    <div class="usp-card fade-up">
+      <span class="usp-num">04</span>
+      <span class="usp-title">Live Garden Setting.</span>
+      <span class="usp-phrase">You're sitting inside a working flower nursery. The scent, the color, the life — it's not decor, it's the address.</span>
     </div>
-    
+    <div class="usp-card fade-up">
+      <span class="usp-num">05</span>
+      <span class="usp-title">Florals & Coffee.</span>
+      <span class="usp-phrase">The barista and the florist share the same ethos: precision, patience, and something made with real hands.</span>
+    </div>
+    <div class="usp-card fade-up">
+      <span class="usp-num">06</span>
+      <span class="usp-title">Warsan's Hidden Gem.</span>
+      <span class="usp-phrase">Off the tourist circuit. Unknown to the algorithm. Found by people who actually look. Worth every minute of the drive.</span>
+    </div>
   </div>
 </section>
 
-
-
-
-<section class="block block--gallery gallery--masonry" data-block="gallery" data-variant="masonry">
-  <h2 class="gallery__heading" data-reveal="rise">Inside the <span class="accent">Bloom</span></h2>
-  <div class="gallery__grid" data-gallery>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 0">
-      <img src="images/img-003.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 1">
-      <img src="images/img-004.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 2">
-      <img src="images/img-005.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 3">
-      <img src="images/img-006.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 4">
-      <img src="images/img-007.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 5">
-      <img src="images/img-008.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 6">
-      <img src="images/img-009.jpg" alt="" loading="lazy" />
-    </figure>
-    
-    <figure class="gallery__item" data-reveal="fade" style="--i: 7">
-      <img src="images/img-010.jpg" alt="" loading="lazy" />
-    </figure>
-    
+<!-- 5. MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <div class="menu-header">
+      <p class="section-tag fade-up">The Menu</p>
+      <h2 class="fade-up">Every drink, a garden in a cup.</h2>
+      <p class="fade-up">From single-origin espresso to signature botanical lattes, our menu is designed to complement the pace of the garden around you.</p>
+    </div>
+    <div class="menu-photos">
+      <div class="photo-item fade-up">
+        <img src="images/img-003.jpg" alt="Brew & Bloom signature drink">
+      </div>
+      <div class="photo-item fade-up">
+        <img src="images/img-004.jpg" alt="Brew & Bloom café food">
+      </div>
+      <div class="photo-item fade-up">
+        <img src="images/img-005.jpg" alt="Brew & Bloom botanical latte">
+      </div>
+    </div>
+    <div class="menu-cols">
+      <div>
+        <p class="menu-col-title">Drinks</p>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Bloom Mocha</div>
+            <p class="menu-item-desc">Espresso, dark chocolate, steamed milk — finished with latte art to order.</p>
+          </div>
+          <span class="menu-item-price">AED 32</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Garden Cappuccino</div>
+            <p class="menu-item-desc">Double shot, velvety microfoam, served in a wide ceramic cup.</p>
+          </div>
+          <span class="menu-item-price">AED 28</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Botanical Cold Brew</div>
+            <p class="menu-item-desc">12-hour cold brew steeped with dried florals, served over ice.</p>
+          </div>
+          <span class="menu-item-price">AED 35</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Rose Cardamom Latte <span class="sig-badge">Signature</span></div>
+            <p class="menu-item-desc">Warm spice, gentle rose — our signature house latte. The garden in a cup.</p>
+          </div>
+          <span class="menu-item-price">AED 34</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Matcha Bloom</div>
+            <p class="menu-item-desc">Ceremonial-grade matcha, oat milk, honey — earthy and clean.</p>
+          </div>
+          <span class="menu-item-price">AED 33</span>
+        </div>
+      </div>
+      <div>
+        <p class="menu-col-title">Food</p>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Warsan Breakfast Plate</div>
+            <p class="menu-item-desc">Eggs your way, sourdough toast, labneh, and house-pickled greens.</p>
+          </div>
+          <span class="menu-item-price">AED 65</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Avocado Toast with Dukkah</div>
+            <p class="menu-item-desc">Smashed avocado, poached egg, Egyptian spice blend on thick sourdough.</p>
+          </div>
+          <span class="menu-item-price">AED 58</span>
+        </div>
+        <div class="menu-item fade-up">
+          <div class="menu-item-info">
+            <div class="menu-item-name">Garden Cheesecake</div>
+            <p class="menu-item-desc">Creamy, set-to-order slice with a buttery biscuit base.</p>
+          </div>
+          <span class="menu-item-price">AED 38</span>
+        </div>
+        <div style="margin-top: 2.5rem; padding: 1.8rem; background: var(--cream); border-radius: 1rem;" class="fade-up">
+          <p class="section-tag" style="margin-bottom: 0.5rem;">Chef's note</p>
+          <p style="font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--olive-deep); line-height: 1.5;">Food so fresh it surprises guests who come for the coffee and leave having booked lunch next time.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="block block--testimonial testimonial--spotlight" data-block="testimonial" data-variant="spotlight" id="reviews">
-  
-  <p class="testimonial__rating" data-reveal="rise">
-    <span class="stars">★★★★★</span>
-    <span class="score">4.8</span>
-    <span class="count">3 verified reviews+ reviews</span>
-  </p>
-  
-  <div class="testimonial__list">
-    
-    <blockquote class="testimonial__card" data-reveal="rise" style="--i: 0">
-      <p>A beautiful hidden gem! Nestled inside a beautifully designed garden center in Warsan, this café offers a peaceful atmosphere surrounded by lush greenery. The coffee was excellent, the service was warm and attentive, and the whole experience was truly enjoyable. It&#39;s the perfect place to relax and unwind. I&#39;ll definitely be visiting again. Highly recommended!</p>
-      <cite>Marwan Jassim</cite>
-    </blockquote>
-    
-    <blockquote class="testimonial__card" data-reveal="rise" style="--i: 1">
-      <p>A lovely hidden gem inside a flower shop! The mix of fresh blooms and coffee aroma creates such a calm and refreshing atmosphere. I had a cappuccino, and it was smooth and well-made. The staff were friendly and welcoming, adding to the overall pleasant experience. A perfect spot to unwind or catch up with friends.</p>
-      <cite>Shabad Abdulla</cite>
-    </blockquote>
-    
-    <blockquote class="testimonial__card" data-reveal="rise" style="--i: 2">
-      <p>We had a great time here and ambiance is cozy and amazing for us. Coffee shop is like a hidden gem in the forest. Hats off to the barista (Ms. Snow) who make the mocha with beautiful arts and cheese cake also delicious. Certainly, I will come everyday.!</p>
-      <cite>Ye Htet Aung</cite>
-    </blockquote>
-    
+<!-- 6. GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-header fade-up">
+    <p class="section-tag" style="color: var(--sage-light); text-align:center; margin-bottom:0.8rem;">Inside the Garden</p>
+    <h2>Tropical heaven. Hidden in the forest. <br>Come see it yourself.</h2>
   </div>
-</section>
-<section class="block block--cta cta-band" data-block="cta-band" data-variant="default">
-  <h2 class="cta-band__headline" data-reveal="rise">Your Table in the Garden Is <span class="accent">Waiting</span>.</h2>
-  <p class="cta-band__sub">Specialty coffee, real blooms, and the kind of quiet Dubai rarely offers. Reserve in seconds.</p>
-  <div class="cta-band__actions">
-    <a class="btn btn--magnetic" href="#contact" data-magnetic>Reserve Your Table — Fast &amp; Easy</a>
-    
+  <div class="gallery-mosaic">
+    <div class="g-item">
+      <img src="images/img-006.jpg" alt="Brew & Bloom garden interior">
+    </div>
+    <div class="g-item">
+      <img src="images/img-007.jpg" alt="Brew & Bloom greenery">
+    </div>
+    <div class="g-item">
+      <img src="images/img-008.jpg" alt="Brew & Bloom botanical space">
+    </div>
+    <div class="g-item">
+      <img src="images/img-009.jpg" alt="Brew & Bloom café seating">
+    </div>
+    <div class="g-item">
+      <img src="images/img-010.jpg" alt="Brew & Bloom blooms and light">
+    </div>
+  </div>
+  <div class="gallery-cta">
+    <p>No filter does it justice. Come see it in person.</p>
+    <a href="#reservation" class="btn-outline">Reserve Your Table</a>
   </div>
 </section>
 
-<section class="block block--map-location" data-block="map-location" data-variant="default">
-  <div class="map-location__card" data-reveal="rise">
-    <p class="map-location__address">Warsan, Dubai, United Arab Emirates</p>
-    <a class="btn btn--magnetic" data-magnetic
-       href="https://www.google.com/maps/search/?api=1&query=Warsan%2C%20Dubai%2C%20United%20Arab%20Emirates"
-       target="_blank" rel="noopener">Get Directions</a>
+<!-- 7. TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-inner">
+    <div class="test-header fade-up">
+      <p class="section-tag" style="text-align:center; margin-bottom:0.6rem;">Guest Voices</p>
+      <h2>4.8★ from guests who found us once<br>and keep finding their way back.</h2>
+      <p class="stars-line">★★★★★ ★★★★★ ★★★★★ ★★★★★ ★★★★★</p>
+    </div>
+
+    <div class="pullquote fade-up">
+      <p>"The atmosphere is in the middle of a plant nursery, the views, the food and the service is out of this world."</p>
+      <cite>— Lara Zureik, verified guest</cite>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"A beautiful hidden gem! Nestled inside a beautifully designed garden center in Warsan, this café offers a peaceful atmosphere surrounded by lush greenery. The coffee was excellent, the service was warm and attentive. It's the perfect place to relax and unwind."</p>
+        <span class="review-author">Marwan Jassim</span>
+        <span class="review-date">On ambiance & atmosphere</span>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"A lovely hidden gem inside a flower shop! The mix of fresh blooms and coffee aroma creates such a calm and refreshing atmosphere. I had a cappuccino, and it was smooth and well-made. A perfect spot to unwind or catch up with friends. ☕🌿"</p>
+        <span class="review-author">Shabad Abdulla</span>
+        <span class="review-date">On aroma & calm</span>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We had a great time here — ambiance is cozy and amazing. Coffee shop is like a hidden gem in the forest. Hats off to the barista Ms. Snow who made the mocha with beautiful arts. The cheesecake also delicious. Certainly, I will come every day!"</p>
+        <span class="review-author">Ye Htet Aung</span>
+        <span class="review-date">On craft & barista Ms. Snow</span>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Amazing café located inside this landscaping store — beautiful interiors! Feels like you are in a tropical heaven! The coffee was great, service impeccable!"</p>
+        <span class="review-author">Binu Justus</span>
+        <span class="review-date">On tropical interior</span>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"This place is a hidden gem. Food is so good, so fresh and I was not expecting it at all. The atmosphere is in the middle of a plant nursery, the views, the food and the service is out of this world."</p>
+        <span class="review-author">Lara Zureik</span>
+        <span class="review-date">On food quality & surprise</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer class="block block--footer" data-block="footer" data-variant="default" id="contact">
-  <p class="footer__name">Brew &amp; Bloom</p>
-  <p class="footer__address">Warsan, Dubai, United Arab Emirates</p>
-  
-  <ul class="footer__hours"><li>Daily · 8:00 AM – 10:00 PM</li></ul>
+<!-- 8. RESERVATION -->
+<section class="reservation" id="reservation">
+  <div class="res-inner">
+    <div class="res-header fade-up">
+      <p class="section-tag" style="text-align:center; margin-bottom:0.8rem;">Find Us</p>
+      <h2>Reserve Your Table —<br><em>Fast & Easy.</em></h2>
+      <p>Warsan is not central Dubai. But ask anyone who has made the drive: it is worth every minute. Your table is waiting in the garden.</p>
+    </div>
+
+    <div class="res-grid">
+      <div class="res-block fade-up">
+        <h3>Call or WhatsApp</h3>
+        <a href="tel:0505548304" class="phone-link">050 554 8304</a>
+        <a href="https://wa.me/9710505548304" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.5rem; color:var(--olive-mid); font-weight:500; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-top:0.5rem;">
+          ↗ Message on WhatsApp
+        </a>
+        <p style="margin-top:1.5rem; font-size:0.78rem;">Walk-ins welcome. For groups of 4 or more, a quick call ensures we have your table ready in the best corner of the garden.</p>
+      </div>
+      <div class="res-block fade-up">
+        <h3>Opening Hours</h3>
+        <div class="hours-row"><span>Monday – Thursday</span><span>8:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span>Friday</span><span>8:00 AM – 11:00 PM</span></div>
+        <div class="hours-row"><span>Saturday</span><span>8:00 AM – 11:00 PM</span></div>
+        <div class="hours-row"><span>Sunday</span><span>9:00 AM – 9:00 PM</span></div>
+      </div>
+    </div>
+
+    <div class="map-container fade-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.5!2d55.42!3d25.17!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEwJzEyLjAiTiA1NcKwMjUnMTIuMCJF!5e0!3m2!1sen!2sae!4v1700000000000"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Brew & Bloom location map">
+      </iframe>
+    </div>
+
+    <div class="res-cta-block fade-up">
+      <a href="tel:0505548304" class="btn-primary">Reserve Your Table — Fast & Easy</a>
+      <p class="closing-line">Your table is waiting in the garden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Brew & Bloom</div>
+  <div class="footer-info">
+    <span>5F25+2Q – Warsan Third – Warsan 3 – Dubai, UAE</span><br>
+    <a href="tel:0505548304">050 554 8304</a> &nbsp;·&nbsp;
+    <a href="https://wa.me/9710505548304" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <p class="footer-copy">© 2025 Brew & Bloom. All rights reserved.</p>
 </footer>
-  </main>
-  <script src="/agency-demos/static/blocks/vendor/gsap.min.js"></script>
-  <script src="/agency-demos/static/blocks/vendor/ScrollTrigger.min.js"></script>
-  <script src="/agency-demos/static/blocks/vendor/lenis.min.js"></script>
-  <script src="/agency-demos/static/blocks/motion-blocks.js"></script>
-</body>
+
+<script src="/agency-demos/static/blocks/vendor/gsap.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/ScrollTrigger.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/lenis.min.js"></script>
+<script>
+// Lenis smooth scroll (duration ≤ 1)
+const lenis = new Lenis({ duration: 0.85, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// GSAP + ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Nav scroll state
+const nav = document.getElementById('mainNav');
+ScrollTrigger.create({
+  start: 'top -60',
+  onUpdate: self => nav.classList.toggle('scrolled', self.progress > 0)
+});
+
+// Hero parallax
+gsap.to('#heroBg', {
+  yPercent: 25,
+  ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// Fade-up elements
+gsap.utils.toArray('.fade-up').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Smooth anchor scroll via lenis
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+  });
+});
+</script>
+<style>
+  /* !important is required here: GSAP's ScrollTrigger keeps re-asserting a
+     PLAIN (non-important) inline opacity on every tick for a tween that
+     hasn't been told to play yet. A plain inline `el.style.opacity = '1'`
+     from JS gets silently overwritten by GSAP's next tick -- verified live,
+     confirmed with getComputedStyle tracking every few hundred ms. A
+     stylesheet rule marked !important beats any later PLAIN inline style
+     GSAP sets, permanently, so this survives GSAP continuing to fight it. */
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  // Failsafe: scroll-reveal content must never stay permanently (or
+  // intermittently) invisible if the Builder's own GSAP/ScrollTrigger
+  // reveal animation didn't fire correctly for any reason -- verified live
+  // that a ScrollTrigger miscalculation can leave real content stuck at
+  // opacity:0 with no scroll position that ever reveals it.
+  //
+  // The Builder has full creative freedom over its own reveal CSS/JS and is
+  // not guaranteed to reuse any particular class name run to run (verified
+  // live: one real page used .fade-up/.fade-in, another used .reveal /
+  // .reveal-left / .reveal-right for the identical opacity:0-then-animate-in
+  // mechanic) -- a hardcoded class list silently stops covering pages that
+  // invent different names. Discover what needs watching by reading the
+  // page's own same-origin stylesheets for simple selectors the Builder
+  // declared with `opacity: 0` (its own "starts hidden" convention),
+  // instead of guessing class names.
+  setTimeout(() => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // cross-origin stylesheet (e.g. a Google Fonts <link>), inaccessible
+      }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue; // skip @media/@keyframes containers etc -- style rules only
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        // Only plain selectors -- a :hover/:focus- or @media-gated opacity:0
+        // rule hides something for a reason unrelated to scroll-reveal, and
+        // forcing it visible would be a real regression, not a rescue.
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach((el) => {
+      // Tag everything this failsafe is responsible for, so bugcheck's
+      // stuck-reveal gate can see bespoke pages at all -- it selects
+      // [data-motion-tracked], which only the Vite template tier's
+      // motion.js was setting.
+      el.setAttribute('data-motion-tracked', '');
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script></body>
 </html>
