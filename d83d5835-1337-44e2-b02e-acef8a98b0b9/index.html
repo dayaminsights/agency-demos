@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Goodluck — Bun Maska, Keema Pav & Irani Chai, Deccan Pune</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #c8af94;
+  --dark: #2e221d;
+  --navy: #1a2640;
+  --sage: #cfd6cf;
+  --amber: #c8922a;
+  --amber-hover: #a87420;
+  --warm-white: #f5f0e8;
+  --text-body: #3a2e28;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text-body); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 1.2; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(46,34,29,0.95);
+  backdrop-filter: blur(6px);
+}
+.nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; color: var(--cream); letter-spacing: 0.04em; }
+.nav-logo span { display: block; font-size: 0.65rem; font-family: 'DM Sans', sans-serif; color: var(--sage); letter-spacing: 0.12em; text-transform: uppercase; }
+.nav-cta {
+  background: var(--amber); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 500;
+  font-size: 0.82rem; letter-spacing: 0.06em; padding: 0.55rem 1.3rem;
+  border: none; cursor: pointer; transition: background 0.2s; display: inline-block;
+}
+.nav-cta:hover { background: var(--amber-hover); }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: flex-end; padding-bottom: 8vh; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/img-008.jpg');
+  background-size: cover; background-position: center top;
+  transform-origin: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(165deg, rgba(20,12,8,0.45) 0%, rgba(28,18,12,0.88) 65%, rgba(28,18,12,0.92) 100%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 780px; padding: 0 3rem; }
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.2rem; opacity: 0;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700;
+  color: #fff; line-height: 1.15; margin-bottom: 1.4rem; opacity: 0;
+}
+.hero h1 em { font-style: italic; color: var(--amber); }
+.hero-sub {
+  font-size: 1.05rem; font-weight: 300; color: #e8e0d4;
+  max-width: 520px; line-height: 1.7; margin-bottom: 2.4rem; opacity: 0;
+}
+.hero-badges { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; opacity: 0; }
+.hero-badge {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em;
+  text-transform: uppercase; border: 1px solid rgba(200,146,42,0.6);
+  color: var(--amber); padding: 0.35rem 0.9rem;
+}
+.btn-primary {
+  display: inline-block; background: var(--amber); color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.88rem;
+  letter-spacing: 0.08em; padding: 0.9rem 2.2rem; border: 2px solid var(--amber);
+  cursor: pointer; transition: background 0.2s, color 0.2s; opacity: 0;
+}
+.btn-primary:hover { background: var(--amber-hover); border-color: var(--amber-hover); }
+.btn-solid { opacity: 1 !important; }
+.hero-landmark { position: absolute; right: 3rem; bottom: 8vh; z-index: 2; text-align: right; opacity: 0; }
+.hero-landmark p { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); line-height: 1.8; }
+
+/* SECTION COMMON */
+.section { padding: 6rem 2.5rem; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-label { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+
+/* ABOUT */
+.about { background: var(--dark); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-img { position: relative; }
+.about-img img { width: 100%; height: 560px; object-fit: cover; }
+.about-img-accent { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 60%; height: 3px; background: var(--amber); }
+.about h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); color: var(--warm-white); margin-bottom: 1.5rem; line-height: 1.25; }
+.about h2 em { color: var(--amber); font-style: italic; }
+.about p { color: var(--sage); font-size: 1rem; line-height: 1.85; margin-bottom: 1.2rem; font-weight: 300; }
+.about p strong { color: var(--cream); font-weight: 500; }
+.about-note { margin-top: 2rem; border-left: 2px solid var(--amber); padding-left: 1rem; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 0.9rem; color: var(--cream); opacity: 0.7; }
+
+/* PROBLEM */
+.problem { background: var(--navy); padding: 5.5rem 2.5rem; }
+.problem-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.problem h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--warm-white); margin-bottom: 1.5rem; }
+.problem-body { color: var(--sage); font-size: 1.05rem; line-height: 1.8; font-weight: 300; margin-bottom: 1.25rem; }
+.problem-resolution { display: inline-block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 1.2rem; color: var(--amber); margin-top: 0.5rem; }
+.problem-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.pill { border: 1px solid rgba(200,146,42,0.45); color: var(--amber); font-size: 0.78rem; letter-spacing: 0.1em; padding: 0.45rem 1rem; font-family: 'DM Sans', sans-serif; }
+
+/* MENU */
+.menu-section { background: var(--warm-white); }
+.menu-intro { font-size: 1rem; color: var(--text-body); line-height: 1.75; max-width: 680px; margin-bottom: 3.5rem; font-weight: 300; }
+.menu-section h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); color: var(--dark); margin-bottom: 1rem; }
+.menu-group-label { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); border-bottom: 1px solid var(--amber); padding-bottom: 0.4rem; margin-bottom: 0; }
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 3rem; }
+.menu-item { padding: 1.5rem 0; border-bottom: 1px solid rgba(46,34,29,0.12); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+.menu-item:nth-child(odd) { padding-right: 2.5rem; }
+.menu-item:nth-child(even) { padding-left: 2.5rem; border-left: 1px solid rgba(46,34,29,0.12); }
+.menu-item-info h4 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+.menu-item-info p { font-size: 0.85rem; color: #6b5a52; line-height: 1.55; font-weight: 300; }
+.menu-item-price { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; color: var(--dark); white-space: nowrap; }
+.menu-item.featured { background: rgba(46,34,29,0.04); padding: 1.5rem 1.2rem; border: 1px solid rgba(200,146,42,0.4); }
+.menu-featured-badge { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--amber); color: #fff; padding: 0.2rem 0.5rem; display: inline-block; margin-bottom: 0.5rem; font-weight: 500; }
+
+/* MENU PHOTOS — 2-col simple grid, no span math */
+.menu-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 3rem 0;
+}
+.menu-photos img { width: 100%; height: 240px; object-fit: cover; }
+
+.menu-cta-row { text-align: center; padding-top: 2rem; }
+
+/* GALLERY */
+.gallery-section { background: var(--dark); padding: 4rem 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 280px; }
+.gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-grid img:hover { transform: scale(1.03); }
+.gallery-grid .g-tall { grid-row: span 2; }
+
+/* USP STRIP — more visual weight */
+.usp-strip {
+  background: var(--dark);
+  border-top: 1px solid rgba(200,146,42,0.25);
+  border-bottom: 1px solid rgba(200,146,42,0.25);
+  padding: 0;
+}
+.usp-band-header {
+  text-align: center;
+  padding: 2.5rem 2.5rem 0;
+}
+.usp-band-header h3 {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--warm-white);
+  margin-bottom: 0.5rem;
+}
+.usp-band-header p {
+  font-size: 0.92rem;
+  color: var(--sage);
+  font-weight: 300;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.usp-band { display: flex; flex-wrap: wrap; margin-top: 2rem; }
+.usp-item {
+  flex: 1 1 16.666%;
+  padding: 2.2rem 1.5rem 2.5rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  border-right: 1px solid rgba(200,146,42,0.15);
+}
+.usp-item:last-child { border-right: none; }
+.usp-icon { font-size: 1.6rem; margin-bottom: 0.7rem; color: var(--amber); }
+.usp-stat { font-family: 'Libre Baskerville', serif; font-size: 1.5rem; font-weight: 700; color: var(--amber); margin-bottom: 0.3rem; line-height: 1; }
+.usp-label { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); line-height: 1.4; }
+
+/* TESTIMONIALS */
+.testimonials { background: #ede7dc; }
+.testimonials h2 { font-size: clamp(1.6rem, 2.4vw, 2.2rem); color: var(--dark); margin-bottom: 0.75rem; }
+.testimonials-intro-text { font-size: 1rem; color: #5a4538; max-width: 560px; line-height: 1.7; font-weight: 300; margin-bottom: 3rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.review-card { background: #fff; padding: 2rem; border-top: 3px solid var(--amber); box-shadow: 0 2px 12px rgba(46,34,29,0.07); }
+.review-stars { color: var(--amber); font-size: 1.1rem; margin-bottom: 0.75rem; letter-spacing: 0.06em; }
+.review-quote { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 0.97rem; line-height: 1.78; color: var(--dark); margin-bottom: 1.5rem; }
+.review-author { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; color: var(--amber); }
+.review-subline { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: #8a7060; margin-top: 0.2rem; }
+
+/* FIND US */
+.find-us { background: var(--navy); }
+.find-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.find-us h2 { font-size: clamp(1.8rem, 2.5vw, 2.3rem); color: var(--warm-white); margin-bottom: 2rem; }
+.find-detail { margin-bottom: 1.75rem; }
+.find-detail-label { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem; }
+.find-detail p { color: var(--sage); font-size: 0.97rem; line-height: 1.7; font-weight: 300; }
+.find-detail a { color: var(--amber); font-weight: 400; }
+.map-wrap { position: relative; padding-bottom: 75%; background: rgba(255,255,255,0.05); overflow: hidden; }
+.map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(30%) contrast(0.95); }
+.seating-note { margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+.seating-badge { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(200,146,42,0.5); color: var(--amber); padding: 0.4rem 0.9rem; }
+
+/* FOOTER */
+footer {
+  background: var(--dark); padding: 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(200,146,42,0.2);
+}
+.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; color: var(--cream); }
+.footer-cta { background: var(--amber); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.82rem; letter-spacing: 0.06em; padding: 0.6rem 1.4rem; transition: background 0.2s; }
+.footer-cta:hover { background: var(--amber-hover); }
+.footer-meta { font-size: 0.78rem; color: rgba(207,214,207,0.55); text-align: right; line-height: 1.7; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid, .find-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-img img { height: 360px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-item:nth-child(even) { padding-left: 0; border-left: none; }
+  .menu-item:nth-child(odd) { padding-right: 0; }
+  .usp-item { flex: 1 1 33.333%; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-landmark { display: none; }
+  nav { padding: 1rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem; }
+  .section { padding: 4rem 1.5rem; }
+  .problem { padding: 4rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .menu-photos { grid-template-columns: 1fr 1fr; }
+  .usp-item { flex: 1 1 50%; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-meta { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Cafe Goodluck
+    <span>Deccan Gymkhana · Pune</span>
+  </div>
+  <a href="#order" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" id="eyebrow">Goodluck Chowk · Deccan Gymkhana · Pune</p>
+    <h1 id="heroH1">Bun Maska, Keema Pav, and a Chai That Brings You Back to <em>Goodluck Chowk</em> — Now Online</h1>
+    <p class="hero-sub" id="heroSub">Order takeaway directly from us — no third-party app, no wrong menu, no guesswork. Prices listed here are the prices you pay.</p>
+    <div class="hero-badges" id="heroBadges">
+      <span class="hero-badge">Irani Chai Heritage</span>
+      <span class="hero-badge">Keema Every Day</span>
+      <span class="hero-badge">No Third-Party Markup</span>
+    </div>
+    <a href="#order" class="btn-primary" id="heroCta">Order now — collect at the counter</a>
+  </div>
+  <div class="hero-landmark" id="heroLandmark">
+    <p>Ferguson College Rd</p>
+    <p>Near Goodluck Chowk</p>
+    <p>Deccan Gymkhana, Pune 411004</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-img">
+      <img src="images/img-001.jpg" alt="Inside Cafe Goodluck — the physical space at Deccan">
+      <div class="about-img-accent"></div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2>The Address Pune Gives <em>Directions By</em></h2>
+      <p>We are Cafe Goodluck — the address Pune's Deccan Gymkhana neighbourhood has given directions by for generations. Goodluck Chowk is not just where we sit; it is a landmark so embedded in the city's mental map that Punekars navigate by it the way other cities navigate by monuments.</p>
+      <p>The Irani cafe tradition that shaped Deccan's mornings — strong chai, fresh-baked mawa cake, generous bun maska — is the lineage this address belongs to. The keema pav and bun maska you remember are still made the same way.</p>
+      <p>This Ferguson College Rd location carries that same kitchen and those same recipes. <strong>This is where you find us now</strong> — and this site is our first official home on the internet, built to put accurate menus, real hours, and our own ordering system back in our hands.</p>
+      <blockquote class="about-note">Client note: please verify heritage recipe claims and Irani chai lineage before publishing.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="why-direct">
+  <div class="problem-inner">
+    <p class="section-label">Why Order Direct</p>
+    <h2>The Problem with Ordering from Someone Else's Menu</h2>
+    <p class="problem-body">You open a delivery app to order from your favourite Deccan cafe and find the wrong prices, a menu that hasn't been updated, and no way to know if your order is actually confirmed. That frustration is real — and it happens because third-party platforms hold the menu, not us.</p>
+    <p class="problem-body">So we put our own menu back in our own hands. The prices listed here are the prices you pay. The menu is updated by us. Orders placed here go straight to the counter.</p>
+    <span class="problem-resolution">No middleman. No markup. No mystery.</span>
+    <div class="problem-pills">
+      <span class="pill">Prices listed = prices you pay</span>
+      <span class="pill">Menu updated by us</span>
+      <span class="pill">Order confirmed at the counter</span>
+      <span class="pill">No third-party commission</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section menu-section" id="menu">
+  <div class="section-inner">
+    <p class="section-label">Current Menu</p>
+    <h2>Everything on the Menu — Priced Correctly</h2>
+    <p class="menu-intro">From morning chai and bun maska to grilled sandwiches, keema pav, and cold coffee — here is everything on our current menu, priced correctly and updated by us.</p>
+
+    <p class="menu-group-label">Morning Staples</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Bun Maska</h4>
+          <p>Toasted bun, generous butter — the order Goodluck is known by.</p>
+        </div>
+        <div class="menu-item-price">₹65</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Irani Chai</h4>
+          <p>Strong, milky, slow-brewed — order it how you like it. The Irani bakery pair.</p>
+        </div>
+        <div class="menu-item-price">₹40</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Mawa Cake</h4>
+          <p>Dense, lightly sweet, unmistakably Irani-bakery — pair it with chai.</p>
+        </div>
+        <div class="menu-item-price">₹55</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Masala Omelette</h4>
+          <p>Eggs with onion, chilli, and coriander — done fast, done right.</p>
+        </div>
+        <div class="menu-item-price">₹90</div>
+      </div>
+    </div>
+
+    <p class="menu-group-label">Mains &amp; Cold Drinks</p>
+    <div class="menu-grid">
+      <div class="menu-item featured">
+        <div class="menu-item-info">
+          <span class="menu-featured-badge">Guests cross the city for this</span>
+          <h4>Chicken Keema Pav</h4>
+          <p>Spiced minced chicken, soft pav — the dish guests travel across Pune for.</p>
+        </div>
+        <div class="menu-item-price">₹180</div>
+      </div>
+      <div class="menu-item featured">
+        <div class="menu-item-info">
+          <span class="menu-featured-badge">Signature · Every Day</span>
+          <h4>Mutton Keema Pav</h4>
+          <p>Rich, deeply spiced mutton keema with fresh-baked pav.</p>
+        </div>
+        <div class="menu-item-price">₹200</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Veg Cheese Grilled Sandwich</h4>
+          <p>Pressed, golden, filled with melted cheese and fresh vegetables.</p>
+        </div>
+        <div class="menu-item-price">₹140</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Cold Coffee</h4>
+          <p>Thick, chilled, made to order — a Deccan-afternoon staple.</p>
+        </div>
+        <div class="menu-item-price">₹120</div>
+      </div>
+    </div>
+
+    <!-- 4 photos in a clean 2×2 grid — no span math, no empty cells -->
+    <div class="menu-photos">
+      <img src="images/img-002.jpg" alt="Keema Pav at Cafe Goodluck">
+      <img src="images/img-003.jpg" alt="Bun Maska with chai">
+      <img src="images/img-004.jpg" alt="Grilled sandwich">
+      <img src="images/img-006.jpg" alt="Food and ambience at Cafe Goodluck">
+    </div>
+
+    <div class="menu-cta-row" id="order">
+      <a href="tel:08582057347" class="btn-primary btn-solid">Order now — collect at the counter</a>
+      <p style="margin-top:1rem; font-size:0.82rem; color:#8a7060; font-weight:300;">Call us: <a href="tel:08582057347" style="color:var(--dark); font-weight:500;">085820 57347</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" aria-label="Cafe Gallery">
+  <div class="gallery-grid">
+    <img src="images/img-005.jpg" alt="Cafe Goodluck food" class="g-tall">
+    <img src="images/img-007.jpg" alt="Indoor seating area">
+    <img src="images/img-009.jpg" alt="The cafe at Goodluck Chowk">
+    <img src="images/img-010.jpg" alt="Neighbourhood context, Deccan Gymkhana">
+    <img src="images/img-001.jpg" alt="Cafe Goodluck interior">
+  </div>
+</section>
+
+<!-- USP STRIP -->
+<section class="usp-strip">
+  <div class="usp-band-header">
+    <h3>Why Goodluck Stands Apart</h3>
+    <p>Decades of morning routines, neighbourhood landmark status, and a kitchen that hasn't compromised on the original recipe — this is what keeps Punekars coming back.</p>
+  </div>
+  <div class="usp-band">
+    <div class="usp-item">
+      <div class="usp-stat">1950s</div>
+      <div class="usp-label">Irani Cafe Heritage</div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">☕</div>
+      <div class="usp-label">Goodluck Chowk Original</div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-stat">₹0</div>
+      <div class="usp-label">Middleman Markup</div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">🍳</div>
+      <div class="usp-label">Keema Every Day</div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">🪑</div>
+      <div class="usp-label">Outdoor &amp; Indoor Seating</div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">↗</div>
+      <div class="usp-label">Order Direct — No App</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="reviews">
+  <div class="section-inner">
+    <p class="section-label">Guest Reviews</p>
+    <h2>Morning after Morning</h2>
+    <p class="testimonials-intro-text">Guests cross the city to sit at these tables. Here is what they say when they get here.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-quote">"Also wanted to taste keema pav so ordered chicken keema pav — it was delicious. Charges are a little higher but this place offers taste and legacy of Goodluck Cafe so it is worth it. Ambience was good and it was clean and tidy."</p>
+        <p class="review-author">Amol</p>
+        <p class="review-subline">4 stars · Google Review</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-quote">"They have outdoor as well as indoor sitting. Variety of dishes is helpful and the taste does not disappoint. Definitely an option after your weekly detox at Pu La Deshpande garden."</p>
+        <p class="review-author">Vishwajit Patil</p>
+        <p class="review-subline">4 stars · Google Review</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"This is not the original branch of Cafe Goodluck, but it's a franchise. But the signature dish of Bun Maska and Chai is the same taste. Must try: Chai and Bun Maska, Coffee, Bun Omelette."</p>
+        <p class="review-author">Manoj Jadhav</p>
+        <p class="review-subline">5 stars · Google Review</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="section find-us" id="find-us">
+  <div class="section-inner find-grid">
+    <div>
+      <p class="section-label">Find Us</p>
+      <h2>Come As You Are. We'll Be There.</h2>
+
+      <div class="find-detail">
+        <p class="find-detail-label">Address</p>
+        <p>Ferguson College Rd, near Goodluck Chowk<br>Deccan Gymkhana, Pune 411004<br>Maharashtra, India</p>
+      </div>
+
+      <div class="find-detail">
+        <p class="find-detail-label">Phone</p>
+        <p><a href="tel:08582057347">085820 57347</a></p>
+      </div>
+
+      <div class="find-detail">
+        <p class="find-detail-label">Hours</p>
+        <p>TBC — hours to be confirmed by client before launch.</p>
+      </div>
+
+      <div class="find-detail">
+        <p class="find-detail-label">Ordering</p>
+        <p>Call ahead or walk in. Collect at the counter. No delivery commission, no third-party price difference.</p>
+      </div>
+
+      <div class="seating-note">
+        <span class="seating-badge">Outdoor Seating</span>
+        <span class="seating-badge">Indoor Seating</span>
+        <span class="seating-badge">Walk-ins Welcome</span>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="tel:08582057347" class="btn-primary btn-solid">Order now — collect at the counter</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=Ferguson+College+Rd%2C+near+Goodluck+Chowk%2C+Deccan+Gymkhana%2C+Pune%2C+Maharashtra+411004%2C+India&output=embed"
+          title="Cafe Goodluck on Google Maps"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Cafe Goodluck</div>
+  <a href="tel:08582057347" class="footer-cta">085820 57347</a>
+  <div class="footer-meta">
+    Ferguson College Rd, near Goodluck Chowk, Deccan Gymkhana, Pune 411004<br>
+    Pune's Irani Cafe Heritage · Order Direct
+  </div>
+</footer>
+
+<script src="/agency-demos/static/blocks/vendor/gsap.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/ScrollTrigger.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/lenis.min.js"></script>
+<script>
+const lenis = new Lenis({ duration: 0.9, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(time => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+
+gsap.set(['#eyebrow', '#heroH1', '#heroSub', '#heroBadges', '#heroCta', '#heroLandmark'], { y: 24 });
+
+const heroTl = gsap.timeline({ delay: 0.2 });
+heroTl
+  .to('#eyebrow', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+  .to('#heroH1', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.3')
+  .to('#heroSub', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+  .to('#heroBadges', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+  .to('#heroCta', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+  .to('#heroLandmark', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.2');
+
+gsap.to('#heroBg', {
+  yPercent: 25, ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+document.querySelectorAll('.about-grid, .problem-inner, .menu-section .section-inner > *, .review-card, .find-grid > div').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, y: 40, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+  });
+});
+
+document.querySelectorAll('.gallery-grid img').forEach((img, i) => {
+  gsap.from(img, {
+    opacity: 0, scale: 1.06, duration: 0.9, delay: i * 0.08, ease: 'power2.out',
+    scrollTrigger: { trigger: img, start: 'top 90%', once: true }
+  });
+});
+
+document.querySelectorAll('.usp-item').forEach((item, i) => {
+  gsap.from(item, {
+    opacity: 0, y: 20, duration: 0.5, delay: i * 0.07, ease: 'power2.out',
+    scrollTrigger: { trigger: '.usp-strip', start: 'top 85%', once: true }
+  });
+});
+
+const navEl = document.querySelector('nav');
+ScrollTrigger.create({
+  start: 'top -80',
+  onUpdate: self => {
+    navEl.style.boxShadow = self.progress > 0 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
+  }
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -70, duration: 1 });
+    }
+  });
+});
+</script>
+<style>
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  setTimeout(() => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try { rules = sheet.cssRules; } catch (e) { continue; }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue;
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach(el => {
+      el.setAttribute('data-motion-tracked', '');
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script>
+<style>
+  /* !important is required here: GSAP's ScrollTrigger keeps re-asserting a
+     PLAIN (non-important) inline opacity on every tick for a tween that
+     hasn't been told to play yet. A plain inline `el.style.opacity = '1'`
+     from JS gets silently overwritten by GSAP's next tick -- verified live,
+     confirmed with getComputedStyle tracking every few hundred ms. A
+     stylesheet rule marked !important beats any later PLAIN inline style
+     GSAP sets, permanently, so this survives GSAP continuing to fight it. */
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  // Failsafe: scroll-reveal content must never stay permanently (or
+  // intermittently) invisible if the Builder's own GSAP/ScrollTrigger
+  // reveal animation didn't fire correctly for any reason -- verified live
+  // that a ScrollTrigger miscalculation can leave real content stuck at
+  // opacity:0 with no scroll position that ever reveals it.
+  //
+  // The Builder has full creative freedom over its own reveal CSS/JS and is
+  // not guaranteed to reuse any particular class name run to run (verified
+  // live: one real page used .fade-up/.fade-in, another used .reveal /
+  // .reveal-left / .reveal-right for the identical opacity:0-then-animate-in
+  // mechanic) -- a hardcoded class list silently stops covering pages that
+  // invent different names. Discover what needs watching by reading the
+  // page's own same-origin stylesheets for simple selectors the Builder
+  // declared with `opacity: 0` (its own "starts hidden" convention),
+  // instead of guessing class names.
+  setTimeout(() => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // cross-origin stylesheet (e.g. a Google Fonts <link>), inaccessible
+      }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue; // skip @media/@keyframes containers etc -- style rules only
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        // Only plain selectors -- a :hover/:focus- or @media-gated opacity:0
+        // rule hides something for a reason unrelated to scroll-reveal, and
+        // forcing it visible would be a real regression, not a rescue.
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach((el) => {
+      // Tag everything this failsafe is responsible for, so bugcheck's
+      // stuck-reveal gate can see bespoke pages at all -- it selects
+      // [data-motion-tracked], which only the Vite template tier's
+      // motion.js was setting.
+      el.setAttribute('data-motion-tracked', '');
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script></body>
+</html>
