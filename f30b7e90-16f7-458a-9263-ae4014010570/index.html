@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khao Man Gai — Melbourne's Thai Chicken Rice, Lonsdale St CBD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #61532f;
+  --red: #9c2b1a;
+  --cream: #d9dcde;
+  --sand: #aba69b;
+  --brown: #53321c;
+  --ink: #1a1410;
+  --off-white: #f7f4ef;
+  --font-head: 'Kanit', sans-serif;
+  --font-body: 'Sarabun', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: var(--font-body); background: var(--off-white); color: var(--ink); overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 64px;
+  background: rgba(26,20,16,0.92); backdrop-filter: blur(8px);
+}
+.nav-logo { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: #fff; letter-spacing: 0.04em; }
+.nav-logo span { color: #d4a843; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.78); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: #d4a843; }
+.nav-cta { background: var(--red); color: #fff; font-family: var(--font-head); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s; }
+.nav-cta:hover { background: #7d2114; }
+
+/* HERO */
+.hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/img-013.jpg');
+  background-size: cover; background-position: center;
+  transform-origin: center; will-change: transform;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,12,6,0.92) 0%, rgba(20,12,6,0.45) 55%, rgba(20,12,6,0.1) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 2rem 5rem;
+  max-width: 860px;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #d4a843;
+  border: 1px solid #d4a843; padding: 0.3rem 0.8rem; margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1.05; color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+}
+.hero h1 em { font-style: normal; color: #d4a843; }
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300;
+  color: rgba(255,255,255,0.82); max-width: 580px;
+  line-height: 1.6; margin-bottom: 2rem;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--red); color: #fff;
+  font-family: var(--font-head); font-weight: 700; font-size: 1rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 1rem 2.4rem;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #7d2114; transform: translateY(-2px); }
+.btn-outline {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.6); color: #fff;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.9rem 2rem; margin-left: 1rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: #d4a843; color: #d4a843; }
+
+/* SECTIONS shared */
+section { padding: 6rem 2rem; }
+.container { max-width: 1160px; margin: 0 auto; }
+.section-tag {
+  font-family: var(--font-body); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--red);
+  margin-bottom: 0.8rem; display: block;
+}
+h2 {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.08; letter-spacing: -0.01em;
+}
+.rule { width: 48px; height: 3px; background: var(--red); margin: 1.2rem 0 1.6rem; }
+
+/* PHILOSOPHY */
+.philosophy { background: var(--ink); color: #fff; }
+.philosophy-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.philosophy-img { position: relative; }
+.philosophy-img img { width: 100%; height: 520px; object-fit: cover; }
+.philosophy-img::after {
+  content: ''; position: absolute;
+  bottom: -16px; right: -16px;
+  width: 60%; height: 60%;
+  border: 2px solid var(--red);
+  z-index: 0; pointer-events: none;
+}
+.philosophy-img img { position: relative; z-index: 1; }
+.philosophy h2 { color: #fff; }
+.philosophy-body {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.85;
+  color: rgba(255,255,255,0.78); margin-bottom: 2rem;
+}
+.philosophy-body strong { color: #d4a843; font-weight: 600; }
+.split-stat {
+  display: flex; gap: 2.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num { font-family: var(--font-head); font-size: 2.4rem; font-weight: 800; color: #d4a843; }
+.stat-label { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+/* PROOF */
+.proof { background: var(--off-white); }
+.proof-inner { max-width: 1160px; margin: 0 auto; }
+.proof-top { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+.proof-top .rule { margin: 1.2rem auto 1.6rem; }
+.problem-text {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--gold); margin-bottom: 0.8rem; line-height: 1.3;
+}
+.stars-row { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin: 1.5rem 0 2.5rem; }
+.stars { color: #d4a843; font-size: 1.4rem; letter-spacing: 0.05em; }
+.stars-label { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; }
+.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.review-card {
+  background: #fff; padding: 2rem;
+  border-left: 3px solid var(--red);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.review-stars { color: #d4a843; font-size: 0.9rem; margin-bottom: 0.8rem; }
+.review-quote {
+  font-size: 1rem; line-height: 1.75; font-weight: 400;
+  color: var(--ink); margin-bottom: 1rem;
+  font-style: italic;
+}
+.review-quote strong { font-style: normal; color: var(--red); font-weight: 700; }
+.review-author { font-family: var(--font-head); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sand); }
+
+/* MENU */
+.menu-section { background: #fff; }
+.menu-header { text-align: center; margin-bottom: 3.5rem; }
+.menu-header .rule { margin: 1.2rem auto 1.6rem; }
+.menu-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.menu-card {
+  position: relative; overflow: hidden; cursor: default;
+}
+.menu-card-img { width: 100%; height: 340px; object-fit: cover; transition: transform 0.5s ease; }
+.menu-card:hover .menu-card-img { transform: scale(1.04); }
+.menu-card-body {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(to top, rgba(20,10,4,0.93) 0%, rgba(20,10,4,0.2) 60%, transparent 100%);
+  padding: 1.6rem;
+}
+.menu-card.featured { grid-column: span 1; }
+.menu-card-tag { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a843; font-weight: 700; margin-bottom: 0.4rem; }
+.menu-card h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+.menu-card p { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.5; margin-bottom: 0.7rem; }
+.menu-card-price { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; color: #d4a843; }
+.dinner-set {
+  margin-top: 2px;
+  background: var(--ink); padding: 2.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+}
+.dinner-set-text h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; }
+.dinner-set-text .badge {
+  display: inline-block; background: var(--red); color: #fff;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.8rem;
+}
+.dinner-set-text p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.65; }
+.dinner-set-text .price { font-family: var(--font-head); font-weight: 800; font-size: 2.2rem; color: #d4a843; margin-top: 0.8rem; }
+.dinner-set-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.dinner-set-imgs img { width: 100%; height: 160px; object-fit: cover; }
+
+/* BEYOND */
+.beyond { background: var(--off-white); }
+.beyond-header { margin-bottom: 3rem; }
+.beyond-intro { font-size: 1.1rem; color: var(--sand); max-width: 540px; line-height: 1.7; margin-top: 1rem; }
+.beyond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.beyond-items { display: flex; flex-direction: column; gap: 0; }
+.beyond-item {
+  display: grid; grid-template-columns: 120px 1fr; gap: 1.2rem;
+  align-items: center; padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(171,166,155,0.3);
+}
+.beyond-item:first-child { border-top: 1px solid rgba(171,166,155,0.3); }
+.beyond-item img { width: 120px; height: 88px; object-fit: cover; }
+.beyond-item-info h4 { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }
+.beyond-item-info p { font-size: 0.9rem; color: #5a5248; line-height: 1.5; font-style: italic; }
+.beyond-item-info .item-price { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; color: var(--red); margin-top: 0.4rem; }
+.beyond-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; align-content: start; }
+.beyond-gallery img { width: 100%; height: 200px; object-fit: cover; }
+
+/* GALLERY */
+.gallery-section { background: var(--ink); padding: 5rem 0; }
+.gallery-top { padding: 0 2rem; margin-bottom: 2rem; }
+.gallery-top h2 { color: #fff; }
+.gallery-top .rule { }
+.gallery-intro-text { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.7; max-width: 600px; margin-top: 1rem; }
+.gallery-reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; padding: 0 2rem; margin-bottom: 2.5rem; }
+.gallery-review {
+  background: rgba(255,255,255,0.05);
+  border-left: 2px solid #d4a843;
+  padding: 1.2rem 1.4rem;
+}
+.gallery-review p { font-size: 0.9rem; color: rgba(255,255,255,0.75); font-style: italic; line-height: 1.65; margin-bottom: 0.6rem; }
+.gallery-review span { font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #d4a843; }
+.ugc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px; padding: 0 2px;
+}
+.ugc-grid img { width: 100%; height: 240px; object-fit: cover; transition: opacity 0.3s; }
+.ugc-grid img:hover { opacity: 0.8; }
+
+/* TRUST BADGES */
+.trust { background: var(--red); padding: 3.5rem 2rem; }
+.trust-inner { max-width: 1160px; margin: 0 auto; }
+.trust h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; text-align: center; }
+.trust-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+.pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; padding: 0.7rem 1.4rem;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9rem;
+  letter-spacing: 0.04em; transition: background 0.2s;
+}
+.pill:hover { background: rgba(255,255,255,0.22); }
+.pill-icon { font-size: 1.1rem; }
+.pill.hl { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); font-weight: 700; }
+
+/* FIND US */
+.find-us { background: var(--off-white); }
+.find-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.find-info h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+.find-info .rule { }
+.find-address { margin: 2rem 0; }
+.find-address h4 { font-family: var(--font-head); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.5rem; }
+.find-address p { font-size: 1.05rem; font-weight: 600; color: var(--ink); line-height: 1.6; }
+.find-address a { color: var(--red); }
+.hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.hours-block { background: #fff; padding: 1.2rem 1.4rem; border-top: 3px solid var(--red); }
+.hours-block h5 { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+.hours-block p { font-size: 0.95rem; line-height: 1.6; color: var(--ink); }
+.service-note { font-size: 0.9rem; color: var(--sand); line-height: 1.65; margin-bottom: 2rem; font-style: italic; }
+.map-wrap { width: 100%; height: 420px; }
+.map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.55);
+  padding: 3rem 2rem; text-align: center;
+}
+.footer-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; color: #fff; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+.footer-logo span { color: #d4a843; }
+footer p { font-size: 0.88rem; line-height: 1.8; }
+footer a { color: rgba(255,255,255,0.75); }
+footer a:hover { color: #d4a843; }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(32px); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .philosophy-grid, .find-grid, .reviews-grid, .gallery-reviews { grid-template-columns: 1fr; gap: 2.5rem; }
+  .menu-trio { grid-template-columns: 1fr; }
+  .dinner-set { grid-template-columns: 1fr; }
+  .beyond-grid { grid-template-columns: 1fr; }
+  .ugc-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+  .hours-grid { grid-template-columns: 1fr; }
+  .beyond-gallery { display: none; }
+}
+@media (max-width: 600px) {
+  section { padding: 4rem 1.2rem; }
+  .ugc-grid { grid-template-columns: repeat(2, 1fr); }
+  .btn-outline { display: none; }
+  .philosophy-img::after { display: none; }
+  .beyond-item { grid-template-columns: 90px 1fr; }
+  .beyond-item img { width: 90px; height: 70px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Khao <span>Man Gai</span></div>
+  <div class="nav-links">
+    <a href="#philosophy">The Dish</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#find">Find Us</a>
+  </div>
+  <a href="#menu" class="nav-cta">Menu</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Lonsdale St, CBD Melbourne</div>
+    <h1>Melbourne's Thai Chicken Rice.<br><em>Nothing Added,</em><br>Nothing Taken Away.</h1>
+    <p class="hero-sub">Silky poached or golden fried — served over jasmine rice with soup, sauce, and sides on Lonsdale St, CBD.</p>
+    <a href="#menu" class="btn-primary">View the Menu</a>
+    <a href="#find" class="btn-outline">Find Us</a>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-img fade-up">
+        <img src="images/img-001.jpg" alt="Khao Man Gai dish in restaurant">
+      </div>
+      <div class="fade-up">
+        <span class="section-tag">The Manifesto</span>
+        <h2 style="color:#fff">One dish.<br>Done right.</h2>
+        <div class="rule"></div>
+        <p class="philosophy-body">
+          Khao Man Gai is built around one dish done right: Thai chicken rice <strong>the way it's eaten in Bangkok</strong> — poached low and slow for that silky pull, or fried to a shatter-crisp finish, always on fragrant jasmine rice with the broth it was cooked in.<br><br>
+          We brought the full picture to Melbourne's CBD — the sauces, the soup, the sticky rice, the milk tea — <strong>nothing stripped back for Western comfort.</strong> One dish, every component at its standard. That's the whole point.
+        </p>
+        <div class="split-stat">
+          <div class="stat-item">
+            <span class="stat-num">4.7★</span>
+            <span class="stat-label">Google Rating</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Ways to Eat It</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">CBD</span>
+            <span class="stat-label">Lonsdale St</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" id="proof">
+  <div class="proof-inner">
+    <div class="proof-top fade-up">
+      <span class="section-tag">Why Come Here</span>
+      <p class="problem-text">"Tired of chicken rice that's just rice with chicken on top — no depth, no sauce, no soul?"</p>
+      <div class="rule"></div>
+      <p style="color:var(--sand);font-size:1rem;line-height:1.7;">We heard you. Here's what thousands of guests found instead.</p>
+      <div class="stars-row">
+        <span class="stars">★★★★★</span>
+        <span class="stars-label">4.7</span>
+        <span style="color:var(--sand);font-size:0.9rem;">from thousands of guests who keep making the trip back to Lonsdale St.</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"The chicken was incredibly tender and juicy, not dry at all. Paired with the rich, well-balanced dipping sauce, it <strong>truly tasted just like having it in Thailand.</strong> I was very impressed and would highly recommend giving it a try."</p>
+        <div class="review-author">— Natiya C.</div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"<strong>One of the best places for authentic Thai chicken rice.</strong> The chicken is tender, juicy, and cooked just right... great value for money and definitely worth coming back for if you're craving a satisfying local meal."</p>
+        <div class="review-author">— Thanapong Sanguandeekul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="menu-header fade-up">
+      <span class="section-tag">The Menu</span>
+      <h2>Two Paths.<br>One Standard.</h2>
+      <div class="rule"></div>
+      <p style="color:var(--sand);max-width:520px;margin:0 auto;font-size:1rem;line-height:1.7;">From signature khao man gai and fiery tom yum noodles to massaman curry sets, roti, and house-made Thai milk tea slushies.</p>
+    </div>
+  </div>
+  <div class="menu-trio">
+    <div class="menu-card">
+      <img class="menu-card-img" src="images/img-002.jpg" alt="Poached Khao Man Gai">
+      <div class="menu-card-body">
+        <div class="menu-card-tag">Signature</div>
+        <h3>Poached Khao Man Gai</h3>
+        <p>Silky slow-poached chicken on fragrant jasmine rice with ginger sauce and clear chicken broth.</p>
+        <div class="menu-card-price">$16</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img class="menu-card-img" src="images/img-003.jpg" alt="Fried Khao Man Gai">
+      <div class="menu-card-body">
+        <div class="menu-card-tag">Signature</div>
+        <h3>Fried Khao Man Gai</h3>
+        <p>Shatter-crisp fried chicken on jasmine rice with house dipping sauce and broth on the side.</p>
+        <div class="menu-card-price">$17</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img class="menu-card-img" src="images/img-004.jpg" alt="Combo Khao Man Gai">
+      <div class="menu-card-body">
+        <div class="menu-card-tag">★ The Full Experience</div>
+        <h3>Combo Khao Man Gai</h3>
+        <p>Half poached, half fried — the full experience on one plate with both sauces.</p>
+        <div class="menu-card-price">$20</div>
+      </div>
+    </div>
+  </div>
+  <div class="dinner-set">
+    <div class="dinner-set-text fade-up">
+      <span class="badge">Dinner Special</span>
+      <h3>The Evening Upgrade</h3>
+      <p>Crispy fried chicken, fragrant rice, rich massaman curry, and roti — dip the chicken straight into the curry. This is what you come back for.</p>
+      <div class="price">$26</div>
+    </div>
+    <div class="dinner-set-imgs fade-up">
+      <img src="images/img-005.jpg" alt="Dinner special set">
+      <img src="images/img-006.jpg" alt="Massaman curry and roti">
+      <img src="images/img-007.jpg" alt="Full dinner spread">
+      <div style="background:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;">
+        <div style="font-family:var(--font-head);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:0.4rem;">Evening only</div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:2rem;color:#fff;">$26</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);text-align:center;margin-top:0.3rem;">Fried chicken + Massaman + Roti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND -->
+<section class="beyond" id="beyond">
+  <div class="container">
+    <div class="beyond-header fade-up">
+      <span class="section-tag">The Full Table</span>
+      <h2>You came for chicken rice.<br>You'll stay for everything else.</h2>
+      <p class="beyond-intro">The rest of the menu earns its place.</p>
+    </div>
+    <div class="beyond-grid">
+      <div class="beyond-items">
+        <div class="beyond-item fade-up">
+          <img src="images/img-008.jpg" alt="Seafood Tom Yum Noodles">
+          <div class="beyond-item-info">
+            <h4>Seafood Tom Yum Noodles</h4>
+            <p>"Hot, sour, and beautifully balanced, loaded with seafood."</p>
+            <div class="item-price">$19</div>
+          </div>
+        </div>
+        <div class="beyond-item fade-up">
+          <img src="images/img-009.jpg" alt="Mango Sticky Rice">
+          <div class="beyond-item-info">
+            <h4>Mango Sticky Rice</h4>
+            <p>"Sweet mango, slightly salty sticky rice — they nailed it."</p>
+            <div class="item-price">$12</div>
+          </div>
+        </div>
+        <div class="beyond-item fade-up">
+          <img src="images/img-010.jpg" alt="Thai Milk Tea Slushie">
+          <div class="beyond-item-info">
+            <h4>Thai Milk Tea Slushie</h4>
+            <p>House-made, blended icy cold, topped with milk tea ice cream.</p>
+            <div class="item-price">$10</div>
+          </div>
+        </div>
+        <div class="beyond-item fade-up">
+          <img src="images/img-011.jpg" alt="Thai Green Tea">
+          <div class="beyond-item-info">
+            <h4>Thai Green Tea</h4>
+            <p>Fragrant, lightly sweetened — brewed in-house, served cold. Not an afterthought.</p>
+            <div class="item-price">$7</div>
+          </div>
+        </div>
+      </div>
+      <div class="beyond-gallery">
+        <img src="images/img-008.jpg" alt="Food spread">
+        <img src="images/img-009.jpg" alt="Mango sticky rice">
+        <img src="images/img-011.jpg" alt="Thai drinks">
+        <img src="images/img-012.jpg" alt="Full table">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-top container fade-up">
+    <span class="section-tag" style="color:#d4a843;">Guest Gallery</span>
+    <h2 style="color:#fff">4.7★ from thousands of guests<br>who keep making the trip back.</h2>
+    <div class="rule"></div>
+    <p class="gallery-intro-text">Real food. Real people. Real trip back to Lonsdale St.</p>
+  </div>
+  <div class="gallery-reviews container fade-up">
+    <div class="gallery-review">
+      <p>"The service is outstanding, <strong>diligently attentive to each customer</strong> — a perfect example of true hospitality. Finished off with their popular yummy Thai milk tea."</p>
+      <span>— Glahss</span>
+    </div>
+    <div class="gallery-review">
+      <p>"<strong>Must visit Thai resto if you are at CBD Melbourne.</strong> When I can't open the web order (I'm a tourist), they quickly guided me to the cashier and ordered manually."</p>
+      <span>— hvd</span>
+    </div>
+  </div>
+  <div class="ugc-grid">
+    <img src="images/img-014.jpg" alt="Guest photo">
+    <img src="images/img-001.jpg" alt="Restaurant photo">
+    <img src="images/img-002.jpg" alt="Poached chicken rice">
+    <img src="images/img-003.jpg" alt="Fried chicken rice">
+    <img src="images/img-004.jpg" alt="Combo plate">
+    <img src="images/img-005.jpg" alt="Dinner set">
+    <img src="images/img-012.jpg" alt="Full spread">
+    <img src="images/img-013.jpg" alt="Signature dish">
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust" id="trust">
+  <div class="trust-inner">
+    <h3>Why Khao Man Gai</h3>
+    <div class="trust-pills">
+      <div class="pill"><span class="pill-icon">🍗</span> Poached or Fried</div>
+      <div class="pill"><span class="pill-icon">🍚</span> Jasmine Rice Always</div>
+      <div class="pill"><span class="pill-icon">📍</span> CBD Melbourne</div>
+      <div class="pill hl"><span class="pill-icon">✅</span> Halal Friendly</div>
+      <div class="pill"><span class="pill-icon">🧋</span> House-Made Drinks</div>
+      <div class="pill"><span class="pill-icon">⭐</span> Thousands of 5-Stars</div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="find-us" id="find">
+  <div class="container">
+    <div class="find-grid">
+      <div class="find-info">
+        <span class="section-tag">Find Us</span>
+        <h2>On Lonsdale St,<br>where you need us.</h2>
+        <div class="rule"></div>
+        <div class="find-address">
+          <h4>Address</h4>
+          <p>Shop A&amp;B / 389 Lonsdale St<br>Melbourne VIC 3000</p>
+        </div>
+        <div class="find-address">
+          <h4>Phone</h4>
+          <p><a href="tel:0396000640">(03) 9600 0640</a></p>
+        </div>
+        <div class="hours-grid">
+          <div class="hours-block">
+            <h5>Lunch</h5>
+            <p>Mon – Fri<br>11:00 am – 3:00 pm</p>
+          </div>
+          <div class="hours-block">
+            <h5>Dinner</h5>
+            <p>Mon – Fri<br>5:00 pm – 8:30 pm</p>
+          </div>
+          <div class="hours-block">
+            <h5>Saturday</h5>
+            <p>11:00 am – 3:00 pm</p>
+          </div>
+          <div class="hours-block">
+            <h5>Sunday</h5>
+            <p>Closed</p>
+          </div>
+        </div>
+        <p class="service-note">Not sure how to order online? Come straight to the counter — the team will sort you out, just like they did for hvd from out of town.</p>
+        <a href="#menu" class="btn-primary" style="background:var(--ink);color:#fff;">View the full menu — find us on Lonsdale St</a>
+      </div>
+      <div class="map-wrap fade-up">
+        <iframe
+          src="https://maps.google.com/maps?q=Shop+A%26B%2F389+Lonsdale+St%2C+Melbourne+VIC+3000%2C+Australia&output=embed"
+          loading="lazy"
+          title="Khao Man Gai location on Google Maps"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Khao <span>Man Gai</span></div>
+  <p>Shop A&amp;B / 389 Lonsdale St, Melbourne VIC 3000<br>
+  <a href="tel:0396000640">(03) 9600 0640</a> &nbsp;·&nbsp;
+  Halal Friendly &nbsp;·&nbsp; 4.7★ on Google<br><br>
+  © 2025 Khao Man Gai Restaurant. All rights reserved.</p>
+</footer>
+
+<script src="/agency-demos/static/blocks/vendor/gsap.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/ScrollTrigger.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/lenis.min.js"></script>
+<script>
+// Lenis smooth scroll
+const lenis = new Lenis({ duration: 0.9, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// GSAP + ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero parallax
+gsap.to('#heroBg', {
+  yPercent: 25,
+  ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// Hero content fade in
+gsap.from('.hero-content > *', {
+  opacity: 0, y: 28, duration: 0.9, stagger: 0.15, ease: 'power2.out', delay: 0.3
+});
+
+// Fade up elements
+document.querySelectorAll('.fade-up').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+  });
+});
+
+// Nav scroll style
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    nav.style.borderBottom = '1px solid rgba(212,168,67,0.2)';
+  } else {
+    nav.style.borderBottom = 'none';
+  }
+});
+
+// Smooth anchor links via Lenis
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const id = this.getAttribute('href');
+    if (id && id.length > 1) {
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -64 });
+      }
+    }
+  });
+});
+</script>
+<style>
+  /* !important is required here: GSAP's ScrollTrigger keeps re-asserting a
+     PLAIN (non-important) inline opacity on every tick for a tween that
+     hasn't been told to play yet. A plain inline `el.style.opacity = '1'`
+     from JS gets silently overwritten by GSAP's next tick -- verified live,
+     confirmed with getComputedStyle tracking every few hundred ms. A
+     stylesheet rule marked !important beats any later PLAIN inline style
+     GSAP sets, permanently, so this survives GSAP continuing to fight it. */
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  // Failsafe: scroll-reveal content must never stay permanently (or
+  // intermittently) invisible if the Builder's own GSAP/ScrollTrigger
+  // reveal animation didn't fire correctly for any reason -- verified live
+  // that a ScrollTrigger miscalculation can leave real content stuck at
+  // opacity:0 with no scroll position that ever reveals it.
+  //
+  // The Builder has full creative freedom over its own reveal CSS/JS and is
+  // not guaranteed to reuse any particular class name run to run (verified
+  // live: one real page used .fade-up/.fade-in, another used .reveal /
+  // .reveal-left / .reveal-right for the identical opacity:0-then-animate-in
+  // mechanic) -- a hardcoded class list silently stops covering pages that
+  // invent different names. Discover what needs watching by reading the
+  // page's own same-origin stylesheets for simple selectors the Builder
+  // declared with `opacity: 0` (its own "starts hidden" convention),
+  // instead of guessing class names.
+  setTimeout(() => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // cross-origin stylesheet (e.g. a Google Fonts <link>), inaccessible
+      }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue; // skip @media/@keyframes containers etc -- style rules only
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        // Only plain selectors -- a :hover/:focus- or @media-gated opacity:0
+        // rule hides something for a reason unrelated to scroll-reveal, and
+        // forcing it visible would be a real regression, not a rescue.
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach((el) => {
+      // Tag everything this failsafe is responsible for, so bugcheck's
+      // stuck-reveal gate can see bespoke pages at all -- it selects
+      // [data-motion-tracked], which only the Vite template tier's
+      // motion.js was setting.
+      el.setAttribute('data-motion-tracked', '');
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script></body>
+</html>
