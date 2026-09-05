@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaws Dental Clinic & Implant Centre — Indore</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #18181f;
+  --olive: #95a82f;
+  --sand: #d5af91;
+  --coral: #f28f66;
+  --slate: #5f6263;
+  --cream: #faf8f4;
+  --white: #ffffff;
+  --gap: clamp(4rem, 8vw, 8rem);
+  --r: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4 { font-family: 'Fraunces', Georgia, serif; line-height: 1.15; font-weight: 600; }
+h1 { font-size: clamp(2.4rem, 5.5vw, 4.2rem); }
+h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; }
+p { font-size: clamp(0.95rem, 1.2vw, 1.08rem); }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; object-fit: cover; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--olive); color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+  padding: 0.85rem 2rem; border-radius: 50px; border: none; cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn:hover { background: #7d9027; transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; border: 2px solid var(--white); color: var(--white);
+}
+.btn-outline:hover { background: var(--white); color: var(--ink); }
+.star { color: var(--coral); font-size: 1.1em; }
+section { padding: var(--gap) 0; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.1rem clamp(1.25rem, 5vw, 3rem);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.35s, box-shadow 0.35s;
+}
+nav.scrolled { background: var(--ink); box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.25rem; color: var(--white); font-weight: 600; line-height: 1.2; }
+.nav-logo span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); }
+.nav-cta { font-size: 0.9rem; padding: 0.65rem 1.5rem; }
+
+/* HERO */
+#hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: flex-end;
+  overflow: hidden; padding: 0;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/img-002.jpg');
+  background-size: cover; background-position: center top;
+  transform-origin: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(24,24,31,0.35) 0%, rgba(24,24,31,0.78) 65%, rgba(24,24,31,0.92) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  width: 100%; padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 3rem) clamp(3.5rem, 6vw, 5rem);
+  max-width: 1200px; margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px; padding: 0.45rem 1.1rem;
+  color: var(--white); font-size: 0.88rem; font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.hero-content h1 { color: var(--white); max-width: 800px; margin-bottom: 1.25rem; }
+.hero-content h1 em { font-style: italic; color: var(--sand); }
+.hero-sub { color: rgba(255,255,255,0.82); font-size: clamp(1rem, 1.6vw, 1.2rem); max-width: 560px; margin-bottom: 2rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.hero-scroll { margin-top: 3rem; display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.hero-scroll-line { width: 40px; height: 1px; background: rgba(255,255,255,0.3); }
+
+/* PROBLEM */
+#problem { background: var(--ink); padding: var(--gap) 0; }
+.problem-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+.problem-label { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 1.5rem; }
+#problem h2 { color: var(--white); font-style: italic; margin-bottom: 2rem; }
+.problem-text { font-size: clamp(1.1rem, 2vw, 1.35rem); color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 2.5rem; }
+.problem-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.pill {
+  padding: 0.6rem 1.3rem; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.65); font-size: 0.9rem;
+  background: rgba(255,255,255,0.05);
+}
+.pill.bad::before { content: '✕ '; color: var(--coral); }
+
+/* ABOUT */
+#about { background: var(--cream); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about-img-wrap { position: relative; border-radius: var(--r); overflow: hidden; }
+.about-img-wrap img { height: 580px; object-fit: cover; border-radius: var(--r); }
+.about-img-badge {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: var(--white); border-radius: 10px;
+  padding: 0.85rem 1.2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.about-img-badge strong { font-size: 1.4rem; font-family: 'Fraunces', serif; color: var(--olive); }
+.about-img-badge span { font-size: 0.78rem; color: var(--slate); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.about-content .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); margin-bottom: 1rem; }
+.about-content h2 { margin-bottom: 1.5rem; }
+.about-content p { color: var(--slate); margin-bottom: 1.25rem; font-size: 1.05rem; line-height: 1.78; }
+.about-highlight {
+  background: linear-gradient(135deg, #95a82f15, #f28f6615);
+  border-left: 3px solid var(--olive);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 1.1rem 1.4rem; margin: 1.75rem 0;
+  font-size: 1.05rem; color: var(--ink); font-weight: 500;
+}
+.about-bridge { margin-top: 1.5rem; font-size: 1rem; color: var(--slate); }
+
+/* SERVICES */
+#services { background: var(--ink); }
+#services .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
+#services h2 { color: var(--white); margin-bottom: 0.75rem; }
+.services-intro { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 3rem; max-width: 600px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.svc-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r); padding: 2rem 1.75rem;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.svc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--olive), var(--coral));
+  opacity: 0; transition: opacity 0.3s;
+}
+.svc-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(149,168,47,0.3); transform: translateY(-4px); }
+.svc-card:hover::before { opacity: 1; }
+.svc-icon { font-size: 2rem; margin-bottom: 1rem; }
+.svc-card h3 { color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.6rem; }
+.svc-card p { color: rgba(255,255,255,0.58); font-size: 0.93rem; line-height: 1.65; }
+.svc-note { margin-top: 0.75rem; font-size: 0.82rem; color: var(--sand); font-weight: 500; }
+
+/* TESTIMONIALS */
+#testimonials { background: var(--cream); }
+.t-header { text-align: center; margin-bottom: 3rem; }
+.t-header .big-rating { font-family: 'Fraunces', serif; font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; color: var(--olive); line-height: 1; }
+.t-header .stars-row { font-size: 1.5rem; margin: 0.5rem 0; }
+.t-header p { color: var(--slate); font-size: 0.95rem; }
+.t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.t-card {
+  background: var(--white); border-radius: var(--r);
+  padding: 1.75rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.t-card.featured { grid-column: span 1; border-top: 3px solid var(--olive); }
+.t-stars { color: var(--coral); font-size: 1rem; letter-spacing: 0.05em; }
+.t-text { font-size: 0.97rem; color: var(--slate); line-height: 1.72; flex: 1; }
+.t-author { display: flex; align-items: center; gap: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #eee; }
+.t-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+.t-name { font-weight: 600; font-size: 0.93rem; }
+.t-label { font-size: 0.78rem; color: var(--slate); }
+
+/* GALLERY */
+#gallery { background: var(--ink); padding: var(--gap) 0; }
+#gallery .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
+#gallery h2 { color: var(--white); margin-bottom: 0.75rem; }
+#gallery .g-sub { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; max-width: 500px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 0.75rem;
+}
+.g-item { border-radius: var(--r); overflow: hidden; position: relative; }
+.g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.g-item:hover img { transform: scale(1.05); }
+.g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.g-item:nth-child(4) { grid-column: span 2; }
+.g-item:nth-child(7) { grid-column: span 2; }
+.g-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(24,24,31,0.82), transparent);
+  color: var(--white); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 1.5rem 1rem 0.75rem; opacity: 0; transition: opacity 0.3s;
+}
+.g-item:hover .g-caption { opacity: 1; }
+
+/* FAQ */
+#faq { background: var(--cream); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
+.faq-header { margin-bottom: 3rem; }
+.faq-header .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); margin-bottom: 1rem; }
+.faq-item { border-bottom: 1px solid rgba(24,24,31,0.1); padding-bottom: 1.75rem; }
+.faq-q { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 0.6rem; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.faq-toggle { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--olive); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1; transition: transform 0.3s; margin-top: 0.1rem; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-a { font-size: 0.95rem; color: var(--slate); line-height: 1.72; margin-top: 0.75rem; }
+.faq-a .soft-cta { display: inline-block; margin-top: 0.5rem; color: var(--olive); font-weight: 600; font-size: 0.9rem; }
+.faq-a { display: none; }
+.faq-item.open .faq-a { display: block; }
+
+/* CONTACT / FOOTER */
+#contact { background: var(--ink); padding: var(--gap) 0 0; }
+.contact-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; padding-bottom: var(--gap); }
+.contact-left .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
+.contact-left h2 { color: var(--white); margin-bottom: 1.25rem; }
+.contact-left p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; max-width: 440px; line-height: 1.75; }
+.contact-actions { display: flex; flex-direction: column; gap: 0.75rem; }
+.phone-link { display: flex; align-items: center; gap: 0.75rem; color: var(--white); font-size: 1.15rem; font-weight: 600; }
+.phone-link .ph-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.contact-info { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.info-row { display: flex; gap: 0.75rem; align-items: flex-start; }
+.info-icon { font-size: 1rem; margin-top: 0.15rem; }
+.info-text { color: rgba(255,255,255,0.62); font-size: 0.93rem; line-height: 1.5; }
+.insurance-note { margin-top: 1.5rem; background: rgba(149,168,47,0.12); border: 1px solid rgba(149,168,47,0.25); border-radius: var(--r); padding: 1rem 1.25rem; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+.insurance-note strong { color: var(--olive); }
+.map-container { border-radius: var(--r); overflow: hidden; height: 380px; background: rgba(255,255,255,0.05); }
+.map-container iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3); }
+.footer-bar {
+  margin-top: var(--gap);
+  padding: 1.75rem clamp(1.25rem, 5vw, 3rem);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+  gap: 1rem;
+}
+.footer-bar p { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 1rem; color: rgba(255,255,255,0.5); }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(28px); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid, .contact-top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .about-img-wrap img { height: 400px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+  .g-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .g-item:nth-child(4) { grid-column: span 1; }
+  .g-item:nth-child(7) { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+  .g-item:nth-child(1) { grid-column: span 2; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .t-card.featured { grid-column: span 1; }
+  .footer-bar { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Jaws Dental<span>Clinic & Implant Centre</span></div>
+  <a href="tel:+919425052499" class="btn nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="star">★★★★★</span> 5.0 — Verified Patient Reviews</div>
+    <h1>Expert Dental &amp; Implant Care —<br><em>Pain-Free, Every Visit.</em></h1>
+    <p class="hero-sub">Dr. Manish Kanungo — 25+ years of trusted dentistry in Indore. Book your appointment in under 60 seconds.</p>
+    <div class="hero-actions">
+      <a href="tel:+919425052499" class="btn">Book Your Appointment</a>
+      <a href="#about" class="btn btn-outline">Meet Dr. Kanungo</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div> Scroll to explore</div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <div class="problem-label">Why patients come to us</div>
+      <h2>Dental care in Indore shouldn't feel like a leap of faith.</h2>
+      <p class="problem-text">Finding a dentist in Indore who actually explains what's happening, keeps the procedure painless, and follows up after you leave home — that's harder than it should be.</p>
+      <div class="problem-pills">
+        <div class="pill bad">No explanation before the drill</div>
+        <div class="pill bad">Pain that wasn't prepared for</div>
+        <div class="pill bad">Silence after you leave the chair</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <img src="images/img-003.jpg" alt="Dr. Manish Kanungo">
+        <div class="about-img-badge">
+          <strong>25+</strong>
+          <span>Years in Indore</span>
+        </div>
+      </div>
+      <div class="about-content fade-up">
+        <div class="label">About Dr. Kanungo</div>
+        <h2>The dentist who calls you after your treatment.</h2>
+        <p>I'm Dr. Manish Kanungo, and I've spent 25 years building a practice where no patient ever feels rushed or left in the dark.</p>
+        <div class="about-highlight">
+          "Even after the treatment, I received follow-up calls to check on my recovery." — Ritik Paliwal, verified patient
+        </div>
+        <p>At Jaws Dental Clinic &amp; Implant Centre, every procedure — from a single extraction to a full implant — is explained step by step before we begin. Because informed patients heal with more confidence, and comfort starts long before the chair.</p>
+        <p>Good dentistry doesn't stop when you walk out the door. That's why we call.</p>
+        <p class="about-bridge"><strong>Here is every procedure we handle under one roof →</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="label">What we treat</div>
+    <h2>Full-Spectrum Dental Care</h2>
+    <p class="services-intro">From same-day tooth pain relief to full-arch implant reconstruction, here's what we treat at our Indore clinic.</p>
+    <div class="services-grid">
+      <div class="svc-card fade-up">
+        <div class="svc-icon">🦷</div>
+        <h3>Dental Implants</h3>
+        <p>Permanent, root-level tooth replacement — assessed, placed, and restored in our Indore clinic. The gold standard for missing teeth.</p>
+        <p class="svc-note">↓ See implant FAQ below for timeline &amp; pain expectations</p>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon">🔬</div>
+        <h3>Root Canal Treatment</h3>
+        <p>Infection cleared and tooth saved — completed with precision to minimise post-procedure sensitivity. Most patients are surprised by how comfortable it is.</p>
+        <p class="svc-note">↓ Pain-free with precise local anaesthesia</p>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon">✦</div>
+        <h3>Painless Tooth Extractions</h3>
+        <p>Including wisdom teeth — patients routinely describe the procedure as smoother than they expected. Gentle technique, calm environment.</p>
+        <p class="svc-note">↓ Follow-up call included after every extraction</p>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon">✦</div>
+        <h3>Cosmetic Dentistry</h3>
+        <p>Veneers, teeth whitening, and smile corrections planned around your face and goals. Elective dentistry with a professional eye for natural results.</p>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon">⟳</div>
+        <h3>Orthodontics &amp; Aligners</h3>
+        <p>Metal braces and clear aligner options for teens and adults seeking straighter teeth. Discreet, comfortable, and monitored closely.</p>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon">◎</div>
+        <h3>Preventive &amp; Restorative Care</h3>
+        <p>Scaling, fillings, crowns, and bridges — the everyday dentistry that protects your long-term oral health and keeps future problems small.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="t-header fade-up">
+      <div class="big-rating">5.0★</div>
+      <div class="stars-row"><span class="star">★★★★★</span></div>
+      <p>5.0★ average across verified patient reviews — here's what Indore patients say about their experience at Jaws.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card featured fade-up">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"I've had an excellent experience at Jaws Dental Clinic! From the moment I walked in, the staff made me feel completely at ease. The clinic is clean, modern, and well-organized. Dr. Manish Kanungo took the time to explain every step of the procedure clearly and made sure I was comfortable throughout. <strong>What stood out most was their commitment to patient care — even after the treatment, I received follow-up calls to check on my recovery.</strong> They truly go above and beyond!"</p>
+        <div class="t-author">
+          <div class="t-avatar">RP</div>
+          <div><div class="t-name">Ritik Paliwal</div><div class="t-label">Verified Patient</div></div>
+        </div>
+      </div>
+      <div class="t-card fade-up">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Sir has been my dentist since childhood and made my multiple tooth removals a smooth, painless experience. Highly recommend for exceptional dental care!"</p>
+        <div class="t-author">
+          <div class="t-avatar">AK</div>
+          <div><div class="t-name">Atharv Khandelwal</div><div class="t-label">Lifetime Patient</div></div>
+        </div>
+      </div>
+      <div class="t-card fade-up">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Sir has a very kind &amp; gentle personality. Did a very smooth painless extraction of my mum's wisdom tooth."</p>
+        <div class="t-author">
+          <div class="t-avatar">SK</div>
+          <div><div class="t-name">Simran Kaur</div><div class="t-label">Verified Patient</div></div>
+        </div>
+      </div>
+      <div class="t-card fade-up">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"I've had a fantastic experience at Jaws Dental Clinic! The team is incredibly professional, friendly, and attentive to patient comfort. The clinic is clean, modern, and equipped with the latest technology. Dr. Manish takes the time to explain procedures clearly and makes sure you're comfortable every step of the way."</p>
+        <div class="t-author">
+          <div class="t-avatar">GS</div>
+          <div><div class="t-name">Gurbachan Singh</div><div class="t-label">Verified Patient</div></div>
+        </div>
+      </div>
+      <div class="t-card fade-up">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Really enjoyed my experience at Jaws Dental Clinic. Dr Manish Kanungo is very professional and friendly. The place is clean and well organised. Loved the treatment and the results."</p>
+        <div class="t-author">
+          <div class="t-avatar">VJ</div>
+          <div><div class="t-name">Vimla Jain</div><div class="t-label">Verified Patient</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="label">Inside the clinic</div>
+    <h2 style="color:var(--white)">Clean. Modern. Organised.</h2>
+    <p class="g-sub">Three things every one of our patients has noted. See for yourself before you visit.</p>
+    <div class="gallery-grid">
+      <div class="g-item fade-up">
+        <img src="images/img-001.jpg" alt="Jaws Dental Clinic">
+        <div class="g-caption">Clinic Overview</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-004.jpg" alt="Treatment Room">
+        <div class="g-caption">Treatment Room</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-005.jpg" alt="Modern Equipment">
+        <div class="g-caption">Modern Equipment</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-006.jpg" alt="Patient Chair">
+        <div class="g-caption">Patient Chair</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-007.jpg" alt="Reception">
+        <div class="g-caption">Reception</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-008.jpg" alt="Sterilisation Setup">
+        <div class="g-caption">Sterilisation Setup</div>
+      </div>
+      <div class="g-item fade-up">
+        <img src="images/img-009.jpg" alt="Consultation Area">
+        <div class="g-caption">Consultation Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header fade-up">
+      <div class="label">Before you book</div>
+      <h2>Questions patients ask most</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Is dental implant treatment painful? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Most patients feel little to no discomfort during implant placement because we administer precise local anaesthesia before we begin. Post-procedure soreness is typically mild and managed with standard pain relief. Dr. Kanungo will walk you through exactly what to expect at your consultation.<br><a class="soft-cta" href="tel:+919425052499">→ Call us to ask anything before you commit</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does a full implant take? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">The timeline depends on bone density and whether any preparatory work is needed, but most patients complete the full process — consultation, placement, healing, and crown fitting — within three to six months. Dr. Kanungo will give you a personalised timeline at your first visit.<br><a class="soft-cta" href="tel:+919425052499">→ Book a consultation to get your timeline</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I book an appointment? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Call us directly on 094250 52499 — our front desk team will schedule you for the next available slot with Dr. Kanungo. Most bookings are confirmed in under 60 seconds.<br><a class="soft-cta" href="tel:+919425052499">→ Call now — we're ready</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does the clinic accept dental insurance? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We work with several major insurance providers. Contact us before your visit with your policy details and we'll confirm coverage and help you understand out-of-pocket costs upfront — no surprises.<br><a class="soft-cta" href="tel:+919425052499">→ Call to verify your coverage</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What are your clinic hours? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We're open Monday through Saturday. Please call us on 094250 52499 to confirm available slots — our calendar reflects live availability so you'll always know exactly when Dr. Kanungo is free.<br><a class="soft-cta" href="tel:+919425052499">→ Check today's availability</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-top">
+      <div class="contact-left fade-up">
+        <div class="label">Book your visit</div>
+        <h2 style="color:var(--white)">We'll see you soon — and call after, too.</h2>
+        <p>Come to our clinic near Agrasen Square in Indore. Walk-ins welcome when slots are available — calling ahead guarantees your time with Dr. Kanungo.</p>
+        <div class="contact-actions">
+          <a href="tel:+919425052499" class="phone-link"><span class="ph-icon">📞</span> 094250 52499</a>
+        </div>
+        <div class="contact-info">
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <span class="info-text">102, above Morni Sarees, near Agrasen Square,<br>Old Agarwal Nagar, Indore, MP 452001</span>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">🕐</span>
+            <span class="info-text">Monday – Saturday &nbsp;|&nbsp; Call for available slots</span>
+          </div>
+        </div>
+        <div class="insurance-note">
+          <strong>Insurance accepted:</strong> We work with major providers — bring your policy details and we'll confirm coverage before your visit.
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="map-container">
+          <iframe
+            src="https://maps.google.com/maps?q=102%2C+above+Morni+Sarees%2C+near+Agrasen+Square%2C+Old+Agarwal+Nagar%2C+Indore%2C+Madhya+Pradesh+452001&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Jaws Dental Clinic location on Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="footer-logo">Jaws Dental Clinic &amp; Implant Centre</div>
+    <p>© 2025 Jaws Dental Clinic &amp; Implant Centre, Indore · 094250 52499</p>
+    <p style="color:rgba(255,255,255,0.25); font-size:0.78rem;">25 years of gentle, explained, followed-up dentistry.</p>
+  </div>
+</section>
+
+<script src="/agency-demos/static/blocks/vendor/gsap.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/ScrollTrigger.min.js"></script>
+<script src="/agency-demos/static/blocks/vendor/lenis.min.js"></script>
+<script>
+// Lenis smooth scroll
+const lenis = new Lenis({ duration: 0.9, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// Nav scroll state
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Hero parallax
+gsap.registerPlugin(ScrollTrigger);
+gsap.to('#heroBg', {
+  yPercent: 25,
+  ease: 'none',
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// Fade-up animations
+gsap.utils.toArray('.fade-up').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 32 },
+    {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Smooth anchor scrolling via lenis
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+  });
+});
+</script>
+<style>
+  /* !important is required here: GSAP's ScrollTrigger keeps re-asserting a
+     PLAIN (non-important) inline opacity on every tick for a tween that
+     hasn't been told to play yet. A plain inline `el.style.opacity = '1'`
+     from JS gets silently overwritten by GSAP's next tick -- verified live,
+     confirmed with getComputedStyle tracking every few hundred ms. A
+     stylesheet rule marked !important beats any later PLAIN inline style
+     GSAP sets, permanently, so this survives GSAP continuing to fight it. */
+  .reveal-failsafe-forced { opacity: 1 !important; transform: none !important; }
+</style>
+<script>
+  // Failsafe: scroll-reveal content must never stay permanently (or
+  // intermittently) invisible if the Builder's own GSAP/ScrollTrigger
+  // reveal animation didn't fire correctly for any reason -- verified live
+  // that a ScrollTrigger miscalculation can leave real content stuck at
+  // opacity:0 with no scroll position that ever reveals it.
+  //
+  // The Builder has full creative freedom over its own reveal CSS/JS and is
+  // not guaranteed to reuse any particular class name run to run (verified
+  // live: one real page used .fade-up/.fade-in, another used .reveal /
+  // .reveal-left / .reveal-right for the identical opacity:0-then-animate-in
+  // mechanic) -- a hardcoded class list silently stops covering pages that
+  // invent different names. Discover what needs watching by reading the
+  // page's own same-origin stylesheets for simple selectors the Builder
+  // declared with `opacity: 0` (its own "starts hidden" convention),
+  // instead of guessing class names.
+  setTimeout(() => {
+    const revealSelectors = new Set();
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // cross-origin stylesheet (e.g. a Google Fonts <link>), inaccessible
+      }
+      if (!rules) continue;
+      for (const rule of rules) {
+        if (!rule.style) continue; // skip @media/@keyframes containers etc -- style rules only
+        const opacity = rule.style.opacity;
+        if (opacity !== '0' && opacity !== 0) continue;
+        const selector = rule.selectorText;
+        // Only plain selectors -- a :hover/:focus- or @media-gated opacity:0
+        // rule hides something for a reason unrelated to scroll-reveal, and
+        // forcing it visible would be a real regression, not a rescue.
+        if (selector && !selector.includes(':') && !selector.includes('@')) {
+          revealSelectors.add(selector);
+        }
+      }
+    }
+    if (revealSelectors.size === 0) return;
+    document.querySelectorAll([...revealSelectors].join(', ')).forEach((el) => {
+      // Tag everything this failsafe is responsible for, so bugcheck's
+      // stuck-reveal gate can see bespoke pages at all -- it selects
+      // [data-motion-tracked], which only the Vite template tier's
+      // motion.js was setting.
+      el.setAttribute('data-motion-tracked', '');
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+        el.classList.add('reveal-failsafe-forced');
+      }
+    });
+  }, 2500);
+</script></body>
+</html>
